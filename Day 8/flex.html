@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .container {
+        height: 800px;
+        width: 100%;
+        background-color: greenyellow;
+        display: flex;
+        /* flex-direction: row; */
+        flex-wrap: wrap;
+        /* wrap nằm dọc */
+        align-items: center;
+        justify-content: space-evenly;
+        /* align item là trên dưới
+        justify là trái phải 
+        space-evenly: cách đều */
+        
+    }
+    .item {
+        /* width: 300px; */
+        height: 200px;
+        border: 2px solid blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 300px;
+        /* flex basis phải nằm trong 1 container */
+        /* flex-grow: 1;  */
+        /* grow đẩy chiều rộng cho phép tràn ra */
+        /* flex-shrink: 1; */
+        /* shrink không cho phép co lại */
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+    </div>
+</body>
+</html>

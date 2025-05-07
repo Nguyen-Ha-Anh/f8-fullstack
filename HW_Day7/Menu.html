@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 10px;
+    }
+
+    img {
+        width: 200px;
+        margin-right: 0;
+    }
+
+    .category {
+        background-color: #bfc1c438;
+        padding: 20px;
+        border-radius: 30px;
+        font-size: 16px;
+        color: #333;
+        display: flex;   
+        justify-content: center;
+        justify-items: center;
+        display: flex;
+        width: 120px;
+        height: 60px;
+        font-weight: bold;
+    }
+
+    .web {
+        position: relative;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    .menu li {
+        position: relative;
+    }
+
+    .menu > li {
+        margin: 0 15px;
+    }
+
+    .menu > li > a {
+        color: #333;
+        padding: 10px;
+        display: inline-block;
+        text-decoration: none;
+    }
+
+    .menu li a:hover {
+        color:  rgba(0, 25, 250, 0.641);
+    }
+
+    .menu li .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-radius: 8px;
+        list-style: none;
+        background-color: aliceblue;
+        width: 100px;
+    }
+
+    .menu li:hover .dropdown {
+        display: block;
+    }
+
+    .dropdown li a {
+        display: block;
+        padding: 8px ;
+        color: black;
+        border-bottom: 1px solid #898989;
+        border-radius: 3px;
+    }
+
+    .join {
+        background: rgb(14,4,170);
+        background: linear-gradient(90deg, rgba(14,4,170,1) 0%, rgba(145,29,165,1) 72%, rgba(179,45,169,1) 100%);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+    }
+
+    .dropdown a {
+        text-decoration: none;
+    }
+
+    .menu li .dropdown li .dropdown {
+        left: 100%;
+        top: 0;
+        position: absolute;
+        display: none;
+        width: 120px;
+    }
+
+    .menu li .dropdown li:hover .dropdown {
+        display: block;
+    }
+
+</style>
+<body>
+    <div class="web">
+        <img src="https://rainbowit.net/html/histudy/assets/images/logo/logo.png" alt="histudy">
+        <span class="category">Category</span>
+
+        <ul class="menu">
+            <li>
+                <a href="#!" class="tool">Home</a> 
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#!" class="tool">Courses</a>
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#!" class="tool">Dashboard</a>
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#!" class="tool">Pages</a>
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#!" class="tool">Elements</a>
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="#!" class="tool">Blog</a>
+                <span class="icon"></span>
+                <ul class="dropdown">
+                    <li><a href="#!">Option 1</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 2</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#!">Option 3</a>
+                        <ul class="dropdown">
+                            <li><a href="#!">Option 1</a></li>
+                            <li><a href="#!">Option 2</a></li>
+                            <li><a href="#!">Option 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button class="join">Join Now</button>
+    </div>
+</body>
+</html>

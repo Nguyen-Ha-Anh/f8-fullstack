@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .msg {
+        /* border: 5px double blue;
+        border-width: 100px; */
+        width: 200px;
+        border: 1px solid blue;
+        background: white;
+        padding: 4px;
+        left: 40px;
+        /* height: 100px; */
+        border-style: ridge;
+        /* border-color: blue transparent transparent transparent;
+        display: inline-block; */
+        border-radius: 5%;
+        position: absolute;
+        box-shadow: 0 0 5px blue;
+        /* shadow cái cuối là độ nhoè */
+    }
+
+
+    .sub {
+        /* border-width: 6px;
+        border-style: solid ;
+        border-color:transparent blue transparent transparent; */
+        width: 0px;
+        border-width: 7px 7px 7px ;
+        border-color:  transparent blue transparent transparent;
+        border-style: solid;
+        position: absolute;
+        left: 27px;
+        top: 10px;
+    }
+
+    .avatar {
+        background: fuchsia;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+    }
+
+    .container > div {
+        display: inline-block;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="avatar">A</div>
+        <div class="sub"></div>
+        <div class="msg">Hello anh em</div>
+    </div>
+</body>
+</html>

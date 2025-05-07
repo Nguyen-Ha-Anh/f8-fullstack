@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+                                                             
+                                                    
+             n = 80                                          
+             sum = 0                                         
+                                                             
+             for(1->80; step = 1)                            
+                                                             
+                     │                                       
+                     │                                       
+                     └───────►  sum = sum + n * (n + 1)      
+                                                             
+                                                             
+                                                             
+                                                             
+          1*2 + 2*3 + 3*4 + ... n*(n+1)                      
+           │     │     │                                     
+           ▼     ▼     ▼                                     
+          n=1   n=2   n=3                                    
+         ─────                                               
+           2                                                 
+         ─────────────                                       
+                6                                            
+             8                                               
+           ───────────────                                   
+                      12                                     
+                 20                                          
+                                                         
+**/     
+
+    let n = 80;
+    let sum = 0;
+
+    for (let i = 1; i <= n; i++) {
+        sum = sum + i * (i + 1);
+    }
+
+    console.log(sum);
+    
+    </script>
+</body>
+</html>

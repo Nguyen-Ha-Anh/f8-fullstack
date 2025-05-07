@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: "Inter", sans-serif;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    }
+
+    .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    }
+
+    .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 82%;
+    background: #e0e0e0;
+    }
+
+    .item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    }
+
+    .content {
+    width: 50%;
+    text-align: right;
+    padding-right: 20px;
+    }
+
+    .content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: #1b1b1b;
+    }
+
+    .content p {
+    color: #666;
+    margin-bottom: 10px;
+    }
+
+    .tag {
+    display: inline-block;
+    background-color: #eee;
+    color: #555;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: background 0.5s ease;
+    }
+
+    .item:hover .tag {
+    background-color: #ab715f;
+    color: #fff;
+    }
+
+    .dot {
+    width: 15px;
+    height: 15px;
+    bottom: 38px;
+    right: 37%;
+    background-color: #26a69a;
+    border-radius: 50%;
+    position: relative;
+    }
+
+
+    .time {
+    position: relative;
+    height: 15px;
+    bottom: 54px;
+    right: 10%;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #999;
+    }
+    
+    .image-container {
+        width: 100%;
+        position: relative;
+        max-width: 360px
+    }
+
+    .image {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 100px;
+        right: 250px;
+        width: 200px;
+        height: 360px;
+        background: rgba(0, 0, 255, 0.3);
+    }
+
+    .awards {
+        position: absolute;
+        bottom: 120px;
+        right: 230px;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 10px;
+        white-space: nowrap;
+    }
+
+    span {
+        margin-right: 12px;
+        font-size: 14px;
+    }
+
+
+    
+</style>
+<body>
+    <div class="timeline">
+        <div class="item">
+            <div class="content">
+                <h3>Together We Build</h3>
+                <p>In quasi vitae non alias nulla qui dolor non tempora tenetur</p>
+                <span class="tag">Family Law</span>
+            </div>
+            <div class="market">
+                <div class="dot"></div>
+                <div class="time">2012 - 2007</div>
+            </div>
+        </div>
+        
+        <div class="item">
+            <div class="content">
+                <h3>Completed 100 Cases</h3>
+                <p>In quasi vitae non alias nulla qui dolor non tempora tenetur</p>
+                <span class="tag">Criminal Law</span>
+            </div>
+            <div class="market">
+                <div class="dot"></div>
+                <div class="time">2016 - 2012</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="content">
+                <h3>We Are Number One</h3>
+                <p>In quasi vitae non alias nulla qui dolor non tempora tenetur</p>
+                <span class="tag">Business Law</span>
+            </div>
+            <div class="market">
+                <div class="dot"></div>
+                <div class="time">2018 - 2016</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="content">
+                <h3>Intellectual Property</h3>
+                <p>In quasi vitae non alias nulla qui dolor non tempora tenetur</p>
+                <span class="tag">Car Accident</span>
+            </div>
+            <div class="market">
+                <div class="dot"></div>
+                <div class="time">2022 - 2018</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img class="image" src="https://images.stockcake.com/public/4/8/7/48798306-b939-47dd-9479-76773daf6fa6_large/lawyer-studying-documents-stockcake.jpg" alt="Lawyer">
+        <div class="overlay"></div>
+        <div class="awards"><h1>+76</h1><span>Winning Awards</span></div>
+    </div>
+</body>
+</html>

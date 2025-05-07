@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      padding: 40px;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 3px;
+      width: 500px;
+    }
+
+    .item {
+      border-bottom: 5px solid white;
+    }
+
+    .item input {
+      display: none;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background-color: #ef5117;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+
+
+    .icon::before {
+      content: '+';
+      font-size: 20px;
+    }
+
+    .item input:checked + label .icon::before {
+      content: '−';
+    }
+
+    .content {
+      display: none;
+      padding: 0 16px;
+      background-color: white;
+      color: #333;
+      font-size: 15px;
+    }
+
+    .item input:checked ~ .content {
+      display: block;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="item">
+      <input type="checkbox" id="question1">
+      <label for="question1" class="title">
+        How to set random colors?
+        <span class="icon"></span>
+      </label>
+      <div class="content">
+        <p>To set random colors:</p>
+        <ol>
+          <li>Add <strong>jag-faq-random-colors</strong> class.</li>
+          <li>Open theme(num).css, find "jag-faq-random-colors".</li>
+          <li>You can change color from here.</li>
+        </ol>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus unde quaerat sed beatae nobis distinctio excepturi labore, commodi sunt magni ex ullam, consequatur animi minus, debitis soluta eos! Repudiandae, quibusdam!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" id="question2" checked>
+      <label for="question2" class="title">
+        How to use theme colors and add new theme color?
+        <span class="icon"></span>
+      </label>
+      <div class="content">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum veritatis culpa odit, magni voluptatem minus voluptas recusandae placeat alias natus cum hic perspiciatis id molestias consequuntur possimus necessitatibus vel. Ullam.</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <input type="checkbox" id="question3">
+      <label for="question3" class="title">
+        How to change icon?
+        <span class="icon"></span>
+      </label>
+      <div class="content">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure itaque, magnam ea quae voluptate nobis delectus mollitia, id ipsum voluptatem molestias eum quos deleniti libero consequatur doloremque vero modi ipsa.</p>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

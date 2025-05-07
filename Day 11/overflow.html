@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        border: 1px solid red;
+        height: 100px;
+        overflow: scroll;
+        /* overflow: giới hạn chiều cao, scroll là thanh cuộn, hidden: cắt ở height */
+
+    }
+
+    .container2 {
+        width: 300px;
+        height: 300px;
+        border: 1px solid red;
+        position: relative;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .container2 {
+        box-sizing: unset;
+    }
+
+    .child {
+        width: 100px;
+        height: 100px;
+        border: 1px solid blue;
+        position: absolute;
+        /* left: 100px;
+        top: 100px; */
+        transform: translate(100px, 100px);
+        /* transform thuộc thằng con
+        top, left,..  theo cha */
+    }
+</style>
+<body>
+    <div class="container2">
+        <div class="child">
+
+        </div>
+    </div>
+    <div class="container">
+        <ul>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+            <li>11111</li>
+        </ul>
+    </div>
+</body>
+</html>

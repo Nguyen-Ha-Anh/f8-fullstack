@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container {
+        background: red;
+        color: #fff;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+
+    }
+    .item1, .item2, .item3 {
+        padding: 10px;
+        border: 1px solid blue ;
+    }
+    .item2 {
+        /* position: relative; */
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background-color: green;
+        position: fixed;
+    }
+    .item3 {
+        position: relative;
+        z-index: 3;
+    }
+    .supper-container {
+        height: 2500px;
+        width: 250px;
+        border: 1px solid blue;
+        margin: auto;
+        position: relative;
+    }
+</style>
+<body>
+<div class="supper-container">
+    <div class="container">
+        <div class="item1">Item1</div>
+        <div class="item2">Item2</div>
+        <div class="item3">Item3</div>
+    </div>
+</div>
+</body>
+</html>

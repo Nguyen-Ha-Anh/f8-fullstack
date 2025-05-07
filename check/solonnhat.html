@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /* bài giảng cho TÌM SỐ LỚN NHẤT **/
+
+            // GỈA SỬ CÓ MẢNG:
+            const numbers = [3, 8, 2, 9, 5]
+
+            //Bước 1: Gán tạm thời phần tử đầu tiên là lớn nhất 
+            let max = numbers[0]
+            // Ta giả sử SỐ LỚN NHẤT hiện tại là phân ftuwr đầu tiên của mảng
+
+            //Bước 2: Dùng VÒNG LẶP duyệt từng phần tử
+            for(let i= 1; i < numbers.length; i++) {
+            // Bắt đầu từ phần tử thứ 2(i=1) để so sánh
+            
+            //Bước 3: So sánh và cập nhật nếu gặp số lớn hơn
+            if (numbers[i] > max) {
+                max = numbers[i]
+                //Nếu numbers[i] lớn hơn max hiện tại, thì cập nhật max
+            }
+        }
+        //Buoc 4: In ra kết quả
+        console.log ('so lon nhat la:', max)
+
+        // THAY > THÀNH < LÀ SẼ CÓ TÌM SỐ NHỎ NHẤT 
+
+        let min = numbers[0]
+
+        for (let i = 1; i < numbers.length; i++) {
+            if (numbers[i] < min) {
+                min = numbers[i]
+            }
+        }
+
+        console.log ('so nho nhat la:', min)
+
+
+
+    </script>
+</body>
+</html>

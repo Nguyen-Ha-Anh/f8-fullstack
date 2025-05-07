@@ -1,0 +1,24 @@
+/* Selector theo thẻ */
+h1 {
+    text-align: center;
+    color: darkblue;
+}
+
+p {
+    color: blue;
+}
+
+/* Selector theo class */
+.product-item {
+    border: 1px solid gray;
+}
+
+/* Selector theo id */
+#header {
+    background-color: lightgray;
+}
+
+/* Selector con */
+div > p {
+    font-weight: bold;
+}

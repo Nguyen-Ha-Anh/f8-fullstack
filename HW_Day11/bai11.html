@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Khai báo biến
+        var name = "Alex";
+        console.log(name);                  //Alex
+        // var là kiểu khai báo cũ
+
+        let age = 22;
+        console.log(age)
+
+        const PI = 3.14                     // hằng số
+        console.log(PI)                     // 3.14
+
+        // Toán tử số học
+        console.log(1 + 1)                   // 2
+        console.log(2 - 1)                   // 1
+        console.log(2 * 3)                   // 6
+        console.log(6 / 2)                   // 3
+        console.log(5 % 2)                   // 1
+        console.log(2 ** 3)                  // 8
+        
+
+
+        // Toán tử và string
+        console.log (1 + 2);                // =3
+        console.log ('Hello' + ' anh em');  //Hello anh em 
+        console.log ('2' + 2);              //string
+        console.log ('10' - 5);             //number
+        console.log ('ab' - 1);             // NaN
+
+        // Number và string (ép kiểu ngầm)
+        console.log(5 + '5');                // 55
+        console.log(5 + true);               // 6 (true = 1)
+        console.log('5' - true);             // 4 
+
+        // Ép kiểu tường minh
+        let z = 22;
+        let n = 10;
+
+        console.log('Number'(s) + n)           // 32
+        console.log('Number'('abc'))          // NaN
+        
+        
+        // Toán tử tăng giảm
+        let x = 5;
+        x += 3; //x = 8
+        x++;    //x = 9
+        ++x;    //x = 10
+        x--;    //x = 9
+        --x;    //x = 8
+        console.log(x)
+
+        // So sánh
+        console.log (3 == '3');      //true
+        console.log (3 === '3');     //false
+        console.log (5 > 2);         //true
+        console.log (5 <=4);         //false
+
+        // Biểu thức ++ --
+        let a = 25
+        const b = a++ + ++a - ++a - a-- - --a;
+        // 25 + 27 - 28 - 28 - 26
+        console.log(b)
+    </script>
+</body>
+</html>

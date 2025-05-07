@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Form</h1>
+    <form 
+        action="https://api-gateway.fullstack.edu.vn/action_page.php" method="get">
+        <label for="name">Nhập họ và tên</label>
+        <!-- value: mặc định -->
+        <input id="name" placeholder="Ho va ten" name="name" type="text" required><br>
+        <label for="">Password</label>
+        <input type="password" placeholder="password" name="password" id="password" value="1234568" disabled><br>
+        <!-- disabled: bảo mật hơn readonly -->
+        <label for="age">Nhập tuổi</label>
+        <input id="age" placeholder="Tuoi" name="age" type="number"><br>
+        <label for="address">Nhập địa chỉ</label>
+        <input id="address" placeholder="Dia chi" name="address"><br>
+        <label for="email">Nhập email</label>
+        <input id="email" placeholder="email" name="email" type="email" value="hanhnguyn@gmail.com" readonly><br>
+    <!-- readonly: không sửa được -->
+        <label for="gender"> Giới tính:</label>
+        <label for="male">male</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="female">female</label>
+        <input type="radio" id="female" name="gender" value="female"><br>
+        <label for="">Ngôn ngữ:</label>
+        <label for="Vi">Vi</label>
+        <input type="checkbox" id="Vi" value="Vi" name="lang[]" checked="checked">
+        <label for="En">En</label>
+        <input type="checkbox" id="En" value="En" name="lang[]">
+        <label for="Jp">Ja</label>
+        <input type="checkbox" id="Ja" value="Ja" name="lang[]"><br>
+        <label for="">Bạn học code ở đâu?</label>
+        <select name="center" id="">
+            <option value="f8">f8</option>
+            <option value="f12">f12</option>
+            <option value="f88">f88</option>
+        </select><br>
+
+        <label for="">xxx</label>
+        <input type="range" min="0" max="500" name="salary"><br>
+        <label for="">About me</label>
+        <textarea rows="5" name="description" aria-placeholder="description" >
+    Hello anh em
+        </textarea>
+        <input type="submit">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Tính tiền taxi
+        
+    //                                                       Total                                                                           
+    //                                                         │                                                                             
+    //                                                         │                                                                             
+    //                                                         │                                                                             
+    //                                                         │ nKm <= 1                                                                    
+    //                                                         ├────────────► ntotal = nKm * 15000                                           
+    //                                                         │                                                                             
+    //                                                         │                                                                             
+    //                                             1 < nKm <= 5│                                                                             
+    //  ntotal = 1 * 15000 + (nKm - 1) * 13500  ◄──────────────┤                                                                             
+    //                                                         │                                                                             
+    //                                                         │                                                                             
+    //                                                         │ nKm > 5                                                                     
+    //                                                         └────────────► ntotal = 1 * 15000 + (5 - 1) * 13500 + (nKm - 5) * 11000       
+                                                                                                                                          
+    //                                                                                               │                                       
+    //                                                                                               │                                       
+    //                                                                                               │                                       
+    //                                                                                               │                                       
+    //                                                                                               │nKm > 120                              
+    //                                                                                               │                                       
+    //                                                                                               ▼                                       
+    //                                                                                    ntotal = notal * (1 - 0.1)                         
+                                                                                                                                          
+     let total = 0
+        let amount = 200
+
+        if (amount <= 1) {
+            total = amount * 15000  
+        }
+
+        else {
+            if (1 < amount <= 5) {
+                total = 1 * 15000 + (amount - 1) * 13500
+            }  
+            
+            if (amount > 5) {
+                total = 1 * 15000 + (5 - 1) * 13500 + (amount - 5) * 11000
+            }
+                
+            if (amount > 120) {
+                total = total * (1 - 0.1)
+            }
+        }
+        console.log(total)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        const numbers = [5, 1, 9, 8, 10]
+        const element = 4
+
+
+        for (let z = 0; z < numbers.length; z++) {
+            for (let i = 0; i < numbers.length - 1; i++) {
+                const curValue = numbers[i]
+                const nextValue = numbers[i + 1]
+
+                if (curValue > nextValue) {
+                    numbers[i]= nextValue
+                    numbers[i + 1] = curValue
+                }
+            }
+        }
+        console.log(numbers)
+
+        let inserted = false;
+
+        for (let i = 0; i < numbers.length; i++) {
+            if (element < numbers[i]) {
+                numbers.splice(i, 0, element);
+                inserted = true;
+                break
+            }
+        }
+
+        if (!inserted) {
+            numbers.push(element)
+        }
+
+        console.log('after insert ' + numbers)
+    </script>
+</body>
+</html>

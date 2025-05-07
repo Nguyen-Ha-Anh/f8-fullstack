@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+    " rel="stylesheet">
+</head>
+
+<style>
+     /* body {
+        background-color: red;
+     }
+
+     @media screen and (min-width: 500px) and (max-width: 700px) {
+        body {
+            background-color: green;
+        } 
+     } */
+
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        border-bottom: 1px solid #ccc;
+        
+    }
+    
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    /* header > ul {
+        position: relative;
+        right: 50px; */
+    /* }
+    header > ul > li {
+        display: inline-block;
+        padding: 16px;
+        position: relative; */
+
+    /* } */
+    /* click vào hiển thị hình bàn tay */
+    li:hover {
+        cursor: pointer;
+    }
+    ul {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+    li {
+        display: inline-block;
+        padding: 2px;
+    }
+    header > ul > li:nth-of-type(2):hover .dropdown {
+        display: block;
+    }
+    .dropdown {
+        display: none;
+        position: absolute;
+        list-style: none;
+    }
+    .dropdown li {
+        list-style: none;
+        padding: 12px;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    .menu > li {
+        display: block;
+        padding: 10px;
+    }
+
+    .menu li::before {
+        display: inline-block;
+    }
+
+    .menu > li:first-child {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 600;
+        gap: 10px;
+        /* gap chỉnh khoảng cách text */
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            background-color: #333;
+            width: 250px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            /* display: none; */
+        }
+        .menu-icon {
+            display: block;
+            padding: 16px;
+        }
+    } 
+
+    .submenu {
+        position: absolute;
+        display: none;
+        background-color: #333;
+        color: white;
+        
+        
+    }
+
+    .menu-icon:hover .submenu {
+        display: block;
+    }
+
+    .menu li::before {
+        padding: 8px;
+        display: inline-block;
+    }
+
+
+</style>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="https://avatars.githubusercontent.com/u/18712667?v=4" alt="F8" width="50px">
+            
+            <ul class="menu">
+                <li class="logo">
+                    <img src="https://avatars.githubusercontent.com/u/18712667?v=4" alt="F8" width="50px">
+                Admin
+                </li>
+                <li class="mdi mdi-home">Home</li>
+                <li class="mdi mdi-view-list-outline">Product
+                    <ul class="dropdown">
+                        <li>Phone</li>
+                        <li>Tab</li>
+                        <li>Laptop</li>
+                        </ul>
+                    </li>
+                    <li class="mdi mdi-responsive">Customers</li>
+                    <li class="mdi mdi-emoticon-excited-outline">About</li>
+                    <li class="mdi mdi-briefcase-clock-outline">Servives</li>
+                    <li class="mdi mdi-lock">Event</li>
+            </ul>
+            <div class="menu-footer">
+                <span>41 Tran Duy Hung</span>
+                <span>123456789</span>
+            </div>
+        <span class="menu-icon mdi mdi-menu">
+        </div>
+    </header>
+</body>
+</html>

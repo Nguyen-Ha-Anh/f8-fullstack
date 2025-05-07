@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*
+                                                               
+                                    so lon: max                                               
+                                    so be: min                                                
+                                    vi tri: Main                                                                                                
+                                                                                        
+                                   98, 3, 2, 68, 22                                     
+                                                                                        
+                                           │                                            
+                                           │                                            
+                                           │                                            
+              ┌────────────────────────────┴────────────────────────────────┐           
+              │                                                             │           
+              ▼                                                             ▼           
+         max = 0                                                       min = 0          
+         maxMain  = 0                                                  minMain = 0      
+              │                                                             │           
+              │                                                             │           
+              │                                                             │           
+              └────────────────►i = 1; i<arr.length, i++◄───────────────────┘           
+                                                                                        
+                                         │                                              
+                                         │                                              
+                                         │                                              
+                                         │                                              
+                            ┌────────────┴─────────┐                                    
+                            │                      │                                    
+                            ▼                      ▼                                    
+                                                                                        
+                      a[i] > max               a[i] < min                               
+                      maxMain = i              minMain = i                              
+                                                                                                                                                                  
+**/
+        const arr = [98, 3, 2, 68, 22];
+
+        let max = arr[0];
+        let min = arr[0];
+        let maxMain = 0;
+        let minMain = 0;
+
+        for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            maxMain = i;
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+            minMain = i;
+        }
+        }
+
+        console.log("Số lớn nhất là:", max, "tại vị trí", maxMain);
+        console.log("Số nhỏ nhất là:", min, "tại vị trí", minMain);
+    </script>
+</body>
+</html>

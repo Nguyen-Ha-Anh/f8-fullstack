@@ -1,0 +1,29 @@
+        /* 
+        selector {
+        css code
+        } 
+        selector: tag name/ class name/ id name, ...
+        */
+        p {
+            color: blue;
+        }
+        #k14 {
+            color: aqua;
+        }
+        /* class= . */
+        .k15 {
+            color: brown;
+        }
+        .ex03 > .ex03-01 > p {
+            color: red;
+        p {
+            color: blue;
+        }
+        .ex03 .ex03-01 p {
+            color: red;
+        }
+        .ex03-01 p {
+            color: green;
+            /* loai green: khong chi tiet */
+        }
+        }

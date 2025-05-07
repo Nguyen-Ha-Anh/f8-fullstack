@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lobster&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-family: "Lobster", sans-serif;
+        font-size: 40px;
+        font-weight: 300;
+        padding-bottom: 30px;
+    }
+
+    body {
+        margin: 50px;
+        padding: 10px;
+        background-color: white;
+    }
+
+    .highlight {
+        color: orangered;
+    }
+
+    p {
+        font-family: "Lato", sans-serif;
+    }
+
+    input {
+        font-family: "Lato", sans-serif;
+    }
+
+    select {
+        font-family: "Lato", sans-serif;
+    }
+
+    textarea {
+        font-family: "Lato", sans-serif;
+    }
+
+    .title {
+        padding: 20px;
+    }
+
+    .container {
+        display: flex;
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-bottom: 25px;
+        padding: 10px;
+        border: 1px solid rgba(176, 176, 176, 0.597);
+        border-radius: 1px;
+        position: relative;
+    }
+
+    .container input,
+    .container textarea {
+        flex: 1;
+        border: none;
+        width: 90%;
+        padding: 5px;
+        font-size: 12px;
+        position: relative;
+        outline: none;
+    }
+
+    .container .icon {
+        display: flex;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .container:focus-within{
+        background-color: white;
+        border: 2px solid gray;
+        box-shadow: 0 0 1px gray;
+    }
+
+    .container:focus .tool,
+    .container:focus .tooltip {
+        display: block;
+    }
+
+    .tool, .tooltip {
+        display: none;
+    }
+    
+    textarea {
+        display: flex;
+        position: relative;
+        padding: 5px;
+        font-size: 12px;
+        height: 100px;
+        width: 90%;
+    }
+
+    .checkbox {
+        display: flex;
+        font-family: "Lato", sans-serif;
+        margin: 10px;
+        padding: 10px;
+        position: relative;
+        justify-content: space-between
+    }
+
+    .checkbox input {
+        margin-right: 10px;
+    }
+
+    button  {
+        border: none;
+        padding: 10px;
+        background-color: orangered;
+        color: white;
+        font-size: 12px;
+        width: 100px;
+        margin-left: 160px;
+        
+    }
+
+    #message {
+        border-radius: 1px solid rgba(176, 176, 176, 0.597);
+        resize: none;
+    }
+
+    .text {
+        font-size: 15px;
+        color: rgba(176, 176, 176, 0.967);
+        display: flex;
+    }
+
+    p {
+        color: rgba(176, 176, 176, 0.796);
+    }
+
+    .name  {
+        display: none;
+        list-style: none;
+        position: absolute;
+    }
+    input[name='name'] > li {
+        display: inline-block;
+        
+    }
+
+    select {
+        width: 100%;
+        padding: 7px;
+        font-size: 12px;
+        outline: none;
+        border: none;
+        color: rgba(82, 82, 82, 0.967) ;
+    }
+
+    .dropdown {
+        position: absolute;
+        background: #333;
+        color: white;
+        font-size: 10px;
+        border-radius: 3px;
+        visibility: hidden;
+        display: none;
+    }
+
+    .dropdown::after {
+        position: absolute;
+        border-width: 6px;
+        border-color: #333;
+    }
+
+    .checkbox .message {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .required {
+        color: rgba(82, 82, 82, 0.569);
+        font-size: 8px;
+        position: absolute;
+        top: 40%;
+        right: 20px;
+        display: inline;
+    }
+
+    .required1 {
+        color: rgba(82, 82, 82, 0.569);
+        font-size: 8px;
+        position: absolute;
+        top: 10%;
+        right: 20px;
+        display: inline;
+    }
+
+    .required-alt {
+        color: black;
+        font-size: 15px;
+        position: absolute;
+        top: 35%;
+        right: 20px;
+        display: none;
+    }
+
+    .required-alt1 {
+        color: black;
+        font-size: 15px;
+        position: absolute;
+        top: 10%;
+        right: 20px;
+        display: none;
+    }
+
+    .container:focus-within .required {
+        display: none;
+    }
+
+    .container:focus-within .required-alt {
+        display: inline;
+    }
+
+    .container:focus-within .required1 {
+        display: none;
+    }
+
+    .container:focus-within .required-alt1 {
+        display: inline;
+    }
+
+    .tool {
+        border-radius: 2px;
+        background-color: #333;
+        position: absolute;
+        text-align: center;
+        color: white;
+        padding: 10px 15px;
+        /* bottom: 60px; */
+        top: -60px;
+        left: 30px;
+    }
+
+    .container:focus-within .tool {
+        display: block;
+    }
+
+    .tooltip {
+        border-width: 8px 8px 8px;
+        border-color: #333 transparent transparent transparent;
+        border-style: solid ;
+        position: absolute;
+        left: 50px;
+        top: -22px;
+    }
+
+    .container:focus-within .tooltip {
+        display: block;
+    }
+
+    .checkbox:hover button {
+        cursor: pointer;
+    }
+
+     
+</style>
+<body>
+    <div>
+        <form action="https://api-gateway.fullstack.edu.vn/action_page.php" method="post">
+            <div class="title">
+                <h1>Hey there</h1>
+                <p><span class="highlight">We'd like to hear from you.</span>Send us your message or just say hy with our contact form or directly via phone, we love to chat.</p>
+            </div>
+
+            <div class="container">
+                <span class="icon">👤</span>
+                <label for="name" class="dropdown">Enter your name</label>
+                <input required type="text" name="name" placeholder="Your name">
+                <span class="tool">Enter your name</span>
+                <span class="required">★</span>
+                <span class="tooltip"></span>
+                <ul class="name">
+                    <li>Enter your name</li>
+                </ul>
+                <span class="required-alt">⤫</span>
+            </div>
+
+            <div class="container">
+                <span class="icon">✉️</span>
+                <label for="email" class="dropdown">Enter your email</label>
+                <input required type="email" name="email" placeholder="your@domain.com">
+                <span class="tool">Enter your email</span>
+                <span class="tooltip"></span>
+                <span class="required">★</span>
+                <span class="required-alt">⤫</span>
+            </div>
+
+            <div class="container">
+                <span class="icon">📱</span>
+                <label for="phone" class="dropdown">Enter your phone number</label>
+                <input type="number" name="phone" placeholder="+44 00 123">
+                <span class="tool">Enter your phone number</span>
+                <span class="tooltip"></span>
+                
+            </div>
+
+            <div class="container">
+                <span class="icon">📖</span>
+                <select name="subject" id="subject">
+                    <option value="Subject">Subject</option>
+                    <option value="Fullstack">Fullstack</option>
+                    <option value="FE">FE</option>
+                </select>
+            </div>
+
+            <div class="container">
+                <span class="icon">💬</span>
+                <textarea required name="message" id="message" placeholder="Message"></textarea>
+                <span class="tool">Enter your message</span>
+                <span class="tooltip"></span>
+                <span class="required1">★</span>
+                <span class="required-alt1">⤫</span>
+            </div>
+
+            <div class="checkbox">
+                <span class="text">
+                    <input class="message" type="checkbox">
+                    Send me a copy of this message
+                </span>
+                <button type="submit">SEND</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

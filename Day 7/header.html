@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    header {
+        border-bottom: 1px solid #ccc;
+        position: relative;
+    }
+    header > ul {
+        position: relative;
+        right: 50px;
+    }
+    header > ul > li {
+        display: inline-block;
+        padding: 16px;
+        position: relative;
+
+    }
+    /* click vào hiển thị hình bàn tay */
+    li:hover {
+        cursor: pointer;
+    }
+    ul {
+        position: absolute;
+        right: 50px;
+        top: 10px;
+    }
+    li {
+        display: inline-block;
+        padding: 2px;
+    }
+    header > ul > li:nth-of-type(2):hover .dropdown {
+        display: block;
+    }
+    .dropdown {
+        display: none;
+        position: absolute;
+        list-style: none;
+    }
+    .dropdown li {
+        list-style: none;
+        padding: 12px;
+    }
+</style>
+<body>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTjgZPYeEML8q7yFim7-zTiZeQizPv8YYOXN2uuVbEsFDlBtFJE56-xIVnicdObd8MyBw&usqp=CAU" alt="F8" width="50px">
+    <ul>
+        <li>Home</li>
+        <li>Product
+            <ul class="dropdown">
+                <li>Phone</li>
+                <li>Tab</li>
+                <li>Laptop</li>
+            </ul>
+        </li>
+        <li>Customers</li>
+        <li>About</li>
+    </ul>
+    </header>
+</body>
+</html>

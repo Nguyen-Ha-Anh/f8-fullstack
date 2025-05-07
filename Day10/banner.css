@@ -1,0 +1,42 @@
+.banner {
+    background-image: url(./img/banner.jpg);
+    height: 615px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.invitation {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 2px #ccc;
+}
+
+@media screen and (max-width: 991px) {
+    .banner {
+        background-image: url(./img/tablet.jpg);
+        height: 615px;
+    }
+    .invitation {
+        width: 100%;
+        left: 0;
+        right: 0;
+        top: 20px;
+        transform: initial;
+        /* initial: reset lại */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner {
+        background-image: url(./img/mobile.jpg);
+    }
+}

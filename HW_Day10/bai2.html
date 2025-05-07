@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+    " rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 100px;
+        font-family: "Inter", sans-serif;
+    }
+
+    .container {
+       display: grid;
+       gap: 20px;
+       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+        position: relative;
+        padding: 30px 20px;
+        border: 1px solid #ddd;
+        overflow: hidden;
+        
+    }
+
+    .card .icon {
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: #ab715f;
+    }
+
+    .card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #111;
+    }
+
+
+    .card:hover .overlay {
+        background-image: url(https://media.cnn.com/api/v1/images/stellar/prod/221128120638-four-day-work-week-stock.jpg?c=16x9&q=h_833,w_1480,c_fill) ;
+        transform: scale(1);
+        
+    }
+
+    .card:hover {
+        border: 1px solid #ab715f;
+    }
+
+    .overlay {
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        background-color: #ab715f;
+        color: white;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.3s;
+        opacity: 0;
+        inset: 0;
+        background-blend-mode: overlay;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .overlay h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #f1f1f1;
+        transition: 0.3s;
+    }
+
+    .overlay p {
+        font-size: 15px;
+        margin-bottom: 20px;
+        color: #f1f1f1;
+        transition: 0.3s;
+    }
+
+
+    .overlay .more {
+        margin-top: auto;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        border: none;
+        background: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .card:hover .overlay {
+        opacity: 1;
+    }
+
+    .overlay .more::after {
+        content: '→';
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        transition: 0.2s;
+    }
+
+    .overlay .more:hover::after {
+        background-color: white;
+        color: #ab715f;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-city-variant-outline"></div>
+                <h3>This is war, and in war the only crime is to lose</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>This is war, and in war the only crime is to lose</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-bag-personal-outline"></div>
+                <h3>Is your business ready for Integration</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>Is your business ready for Integration</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-hammer"></div>
+                <h3>Do injured workers have to be treated</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>Do injured workers have to be treated</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-handshake-outline"></div>
+                <h3>Nobis occaecati nobis Repudiamus andaem.</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>Nobis occaecati nobis Repudiamus andaem.</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-scale-balance"></div>
+                <h3>How is equity determined in a divorce</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>How is equity determined in a divorce</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+                <div class="icon mdi mdi-handcuffs"></div>
+                <h3>Amet massa vel dolor delen recusand</h3>
+                <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                <div class="overlay">
+                    <h3>Amet massa vel dolor delen recusand</h3>
+                    <p>Quis autem iure qui voluptate velit ess quam molestiae was.</p>
+                    <a href="#!" class="more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

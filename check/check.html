@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+</style>
+<body>
+    <script>
+        /* tìm số lớn nhất, nhỏ nhất 
+
+        lớn nhất:
+
+        let max = numbers[0] // giả sử phần tử đầu tiên là lớn nhất
+
+        for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i] // nếu phần tử hiện tại lớn hơn max thì cập nhật
+        }
+        }
+
+        console.log("Số lớn nhất là:", max)
+
+        nhỏ nhất:
+
+        let min = numbers[0]
+
+        for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] < min) {
+            min = numbers[i]
+        }
+        }
+
+        console.log("Số nhỏ nhất là:", min)
+
+        Tìm vị trí của số lớn nhât và nhỏ nhất:
+
+        let max = numbers[0]
+        let maxIndex = 0
+
+        let min = numbers[0]
+        let minIndex = 0
+
+        for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers[i]
+            maxIndex = i
+        }
+
+        if (numbers[i] < min) {
+            min = numbers[i]
+            minIndex = i
+        }
+        }
+
+        console.log("Số lớn nhất là:", max, "ở vị trí", maxIndex)
+        console.log("Số nhỏ nhất là:", min, "ở vị trí", minIndex)
+
+        **/
+
+        const numbers = [12, 5, 7, 20, 3, 10]
+
+        for (let i = 0; i < numbers.length; i++ ) {
+            const index = i
+            const value = numbers [i]
+            console.log('Phần tử tại vị trí', index, 'là', value)
+        }
+
+    </script>
+    
+</body>
+</html>

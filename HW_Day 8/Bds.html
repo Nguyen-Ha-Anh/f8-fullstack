@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: "Asap", sans-serif;
+        box-sizing: border-box;
+    }
+
+    .wrap {
+        padding: 30px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-bottom: 30px;
+        padding: 30px;
+    }
+
+                                                                                                                
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        margin-bottom: 40px;
+        justify-content: space-evenly;
+    }
+
+    .list button {
+        border: none;
+        background-color: #eee;
+        border-radius: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .list button span {
+        display: block;
+        font-size: 12px;
+    }
+
+    .list button:hover {
+        background-color: #b46f1d;
+        color: white;
+    }
+    
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 200px;
+        margin-top: 20px;
+        height: auto;
+        justify-content: space-between;
+    }
+
+    .district {
+        position: relative;
+        border-radius: 12px;
+        width: calc(33.33% - 24px);
+        background-color: #ccc;
+        display: flex;
+        margin: 12px;
+        
+    }
+
+    .district img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        flex-wrap: wrap;
+    }
+
+    .district-text {
+        position: absolute;
+        color: white;
+        display: flex;
+        width: 100%;
+        height: 110%;
+        padding: 12px;
+    }
+
+    .district-name {
+        position: absolute;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 6px 10px;
+        top: 12px;
+        left: 12px;
+        color: white;
+        max-width: 150px;
+        display: flex;
+        border: 1px solid rgba(255, 255, 255, 0.051);
+        background-color: rgba(0 0 0 0.5);
+        
+    }
+
+    .district-count {
+        position: absolute;
+        font-size: 14px;
+        bottom: 50px;
+        left: 16px;
+    }
+
+    .district-name, .district-count {
+        z-index: 1;
+    }
+
+</style>
+<body>
+    <div class="wrap">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <h2>KHÁM PHÁ BẤT ĐỘNG SẢN CÁC KHU VỰC NỔI BẬT</h2>
+
+        <div class="sub" >
+            <div class="list">
+                <button class="tab">Hồ Chí Minh
+                    <br>
+                    <span>50.317 bất động sản</span>
+                </button>
+
+                <button class="tab">Hà Nội
+                    <br>
+                    <span>18.767 bất động sản</span>
+                </button>
+
+                <button class="tab">Bình Dương
+                    <br>
+                    <span>7.051 bất động sản</span>
+                </button>
+
+                <button class="tab">Đồng Nai
+                    <br>
+                    <span>4.251 bất động sản</span>
+                </button>
+
+                <button class="tab">Bà Rịa Vũng Tàu
+                    <br>
+                    <span>3.968 bất động sản</span>
+                </button>
+
+                <button class="tab">Đà Nẵng
+                    <br>
+                    <span>3.680 bất động sản</span>
+                </button>
+
+                <button class="tab">Long An
+                    <br>
+                    <span>2.835 bất động sản</span>
+                </button>
+
+                <button class="tab">Quảng Ninh
+                    <br>
+                    <span>2.490 bất động sản</span>
+                </button>
+            </div>
+
+            <div class="container">
+                <div class="district">
+                    <img src="https://decoxdesign.com/upload/images/can-ho-penthouse-01-decox-design.jpg" alt="Quận 2">
+                    <div class="district-text">
+                        <h3 class="district-name">Quận 2</h3>
+                        <p class="district-count">4.186 bất động sản đang bán</p>
+                    </div>
+                </div>
+
+                <div class="district">
+                    <img src="https://www.lanha.vn/wp-content/uploads/2023/08/thiet-ke-noi-that-penthouse-6.jpg.webp" alt="Quận 7">
+                    <div class="district-text">
+                        <h3 class="district-name">Quận 7</h3>
+                        <p class="district-count">4.664 bất động sản đang bán</p>
+                    </div>
+                </div>
+
+                <div class="district">
+                    <img src="https://decoxdesign.com/upload/images/can-ho-penthouse-07-decox-design.jpg" alt="Quận 9">
+                    <div class="district-text">
+                        <h3 class="district-name">Quận 9</h3>
+                        <p class="district-count">3.702 bất động sản đang bán</p>
+                    </div>    
+                </div>
+
+                <div class="district">
+                    <img src="https://s-housing.vn/wp-content/uploads/2022/12/penthouse.jpg" alt="Quận Tân Bình">
+                    <div class="district-text">
+                        <h3 class="district-name">Quận Tân Bình</h3>
+                        <p class="district-count">3.062 bất động sản đang bán</p>
+                    </div>
+                </div>
+
+                <div class="district">
+                    <img src="https://decoxdesign.com/upload/images/the-indofuture-sky-villa-phong-khach-06-decox.jpg" alt="Thành phố Thủ Đức">
+                    <div class="district-text">
+                        <h3 class="district-name">Thành phố Thủ Đức</h3>
+                        <p class="district-count">2.843 bất động sản đang bán</p>
+                    </div>
+                </div>
+
+                <div class="district">
+                    <img src="https://www.lanha.vn/wp-content/uploads/2023/08/thiet-ke-noi-that-penthouse-1.jpeg.webp" alt="Huyện Bình Chánh">
+                    <div class="district-text">
+                        <h3 class="district-name">Huyện Bình Chánh</h3>
+                        <p class="district-count">3.235 bất động sản đang bán</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

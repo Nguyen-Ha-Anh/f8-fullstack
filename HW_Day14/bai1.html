@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*                              
+          tao classGroup               
+                 12A1                  
+                 12A2                  
+                   │                   
+                   │                   
+                   │                   
+                   ▼                   
+                  for                  
+       i = 0; i < students.length; i++ 
+                   │                   
+                   │                   
+                   │                   
+                   ▼                   
+           tach class và name          
+                   │                   
+                   │                   
+                   │                   
+                   ▼                   
+          classGroup(lop).push(ten)    
+                              
+**/
+
+        const students = [
+            { name: 'An', class: '12A1' },
+            { name: 'Bình', class: '12A2' },
+            { name: 'Cường', class: '12A1' },
+        ]
+
+        const classGroups = {
+            '12A1': [],
+            '12A2': []
+        }
+
+        for (i = 0; i < students.length; i++) {
+            const student = students[i]
+            const lop = student.class
+            const ten = student.name
+
+            classGroups[lop].push(ten)
+        }
+        
+        console.log (classGroups)
+    </script>
+</body>
+</html>

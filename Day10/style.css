@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Dosis", sans-serif;
+}
+
+.container {
+    max-width: 1192px;
+    margin: auto;
+}
+
+.primary-font-family {
+    font-family: "Great Vibes", cursive;
+}
+
+.primary-color {
+    color: #9ec2bb;
+}
+
+.d-lock {
+    display: block;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-item-center {
+    align-items: center;
+}
+
+.pa-4 {
+    padding: 8px;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+    .menu-icon {
+        display: inline-block;
+    }
+    header nav {
+        display: none;
+    }
+    
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+.font-size-62 {
+    font-size: 62px;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-basic-50-percent {
+    flex-basis: 50%;
+}
+
+.red-color {
+    color: red;
+}

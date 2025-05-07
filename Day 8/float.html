@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        float: right;
+    }
+
+    .item {
+        width: 100px;
+        height: 200px;
+        border:  1px solid red;
+        /* dùng float sẽ không có khoảng trống, hạn chế */
+        /* float: left; */
+        /* có khoảng trống khi dùng display */
+        display: inline-block;
+    }
+</style>
+<body>
+    <p>
+        <img src="https://file.hstatic.net/200000108863/file/3_33cbf6a0308e40ca8962af5e0460397c_grande.png" alt="anh" width="100px">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, non, odit deleniti neque debitis tempora error harum id perspiciatis asperiores sed vitae quo doloremque architecto mollitia dolores repellat atque blanditiis.
+    </p>
+    <div style="clear: both;">
+        <p>Test thoi anh em</p>
+    </div>
+
+    <div class="product">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+</body>
+</html>

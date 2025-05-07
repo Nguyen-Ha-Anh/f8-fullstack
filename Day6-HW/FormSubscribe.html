@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 2;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        padding: 10px;
+    }
+    .subscribe-container {
+        background-color: #445065;
+        padding: 20px;
+        border-radius: 8px;
+        background-color:  rgb(60, 80, 100)
+    }
+
+    h1::before {
+        color: rgba(255, 166, 0, 0.995);
+    }
+    h1::before {
+        content: 'Earn income ';
+    }
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+    }
+    p {
+        color: white;
+    }
+    input {
+        background-color: white;
+        padding: 7px;
+        width: 200px;
+        border: 3px solid white;
+    }
+    button {
+        padding: 10px 15px;
+        width: 180px;
+        background-color: rgba(255, 234, 0, 0.901) ;
+    }
+    .subscribe-container:hover input {
+        background-color: #ddd;
+    }
+    .subscribe-container:hover input::placeholder {
+        color: orange;
+    }
+    .subscribe-container:hover button {
+        background-color: rgba(255, 166, 0, 0.995) ;
+        color: #fff;
+    }
+</style>
+<body>
+    <form 
+    action="https://api-gateway.fullstack.edu.vn/action_page.php"
+    method="post">
+    <div class="subscribe-container">
+        <h1>with your CSS skills</h1>
+            <p>Sign up and we'll send you the best freelance opportunites straight to your inbox.</p>
+            <p>We're building the largest self-service freelancing marketplace for people like you.</p>
+            <input type="email" name="email" placeholder="Email address">
+            <button>Send Me Opportunities</button>
+    </div>
+    </form>    
+</body>
+</html>

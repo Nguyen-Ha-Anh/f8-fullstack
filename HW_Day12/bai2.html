@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // Tìm số chính phương
+
+        // So chinh phuong(n)                                      
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 ▼                                                 
+        //                         ĐK:N>0;n=a^2; n∈Z                                         
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 ▼                                                 
+        //                         su dung ham sqrt                                          
+        //                         Number.isInteger                                          
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //                                 │                                                 
+        //        n la so nguyen     ◄─────┴──────►  n khong phai la so nguyen               
+        //    => n la so chinh phuong              => n khong phai so chinh phuong           
+                                                                                          
+                                                                                          
+        let n = 25
+
+        let canbachai = Math.sqrt(n)
+
+        if (Number.isInteger(canbachai)) {
+            console.log(n + ' la so chinh phuong')
+        }
+
+        else {
+            console.log(n + ' khong phai so chinh phuong')
+        }
+    </script>
+</body>
+</html>

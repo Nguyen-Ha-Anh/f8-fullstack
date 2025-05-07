@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    span {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid red;
+
+    }
+    p {
+        padding: 10px;
+        border: 1px solid red;
+    }
+    ul {
+        background-color: black;
+        padding: 15px;
+    }
+    li {
+        color: white;
+        display: inline-block;
+    }
+    .dropship {
+        display: none;
+        color: white;
+        width: 100px;
+        background-color: green;
+    }
+    /* để hover vào thư mục hiện lên */
+    ul li:hover ~ .dropship {
+        color: aliceblue;
+        display: block;
+    }
+</style>
+<body>
+    <h1>Text 01</h1>
+    <span>Text span</span>
+    <p>Test p</p>
+    <ul>
+        <li>Home</li>
+        <li>products</li>
+        <li>contact</li>
+        <li>customers</li>
+        <div class="dropship">
+            <div>item1</div>
+            <div>item2</div>
+            <div>item3</div>
+        </div>
+    </ul>
+</body>
+</html>
