@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Lọc giá trị trùng nhau
+
+        //Bước 1: Tạo một object để đếm số lần xuất hiện
+        const count = {}
+
+        //Bước 2: Duyệt qua từng phần tử và đếm số lần xuất hiện
+        for (let i = 0; i < numbers.length; i++) {
+        const num = numbers[i]
+            if (count[num]) {
+                count[num] += 1
+            } else {
+                count[num] = 1
+            }
+        }
+
+        //Bước 3: Tạo mảng mới chứa các số bị trùng (xuất hiện >= 2)
+        const duplicates = []
+
+        for (const num in count) {
+            if (count[num] >= 2) {
+                duplicates.push(Number(num))
+            }
+        }
+    //Bước 4: In ra kết quả
+    console.log('Các số trùng nhau là:', duplicates)
+
+    </script>
+</body>
+</html>

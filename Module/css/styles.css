@@ -35,9 +35,9 @@
   }
   
   .container {
-    max-width: 1280px;
+    max-width: 1050px;
     margin: 0 auto;
-    padding: 80px 115px;
+    padding: 80px 0;
   }
   
 
@@ -218,8 +218,6 @@
   }
  
   .hero__inner {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     display: flex;
@@ -567,7 +565,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 25px;
     align-self: stretch;
   }
 
@@ -596,13 +593,18 @@
     display: block;
   }
   .category span {
-    display: block;
     display: flex;
     padding: 20px 30px 25px 30px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 25px;
     align-self: stretch;
+    color: var(--White, #FFF);
+    font-family: "Work Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    text-transform: capitalize;
   }
   
   .nfts__grid {
@@ -738,12 +740,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 360px 195px 60px 195px;
     width: 100%;
     gap: 30px;
     flex: 1 0 0;
-
-    
+    display: flex;
+    width: 1050px;
+    align-items: flex-end;
+    justify-content: center;
+        
   }
 
   .magic_see {
@@ -757,7 +761,7 @@
     width: auto;
     height: 60px;
     position: relative;
-    right: 50px;
+    right: 150px;
   }
 
   .magic_see .magic__access {
@@ -777,6 +781,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
   }
   
 
@@ -785,6 +790,8 @@
     width: 295px;
     height: 147px;
     padding: 30px;
+    position:relative;
+    left: 200px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -814,6 +821,9 @@
     color: var(--Text, #FFF);
     font-family: "Space Mono";
     font-size: 38px;
+    display: block;
+    width: 53px;
+    height: 46px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
@@ -865,17 +875,6 @@
   .countdown div {
     text-align: center;
   }
-  
-  .countdown strong {
-    font-size: 2rem;
-  }
-  
-  .countdown span {
-    font-size: 0.75rem;
-    display: block;
-    margin-top: 0.25rem;
-  }
-  
   
   .works__grid {
     display: flex;
