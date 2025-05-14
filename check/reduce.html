@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const oldEmployees = employees.reduce((max, current) => {
+    return current.age > max.age ? current : max;
+})
+
+//Hàm REDUCE (()): 2 biến + 3 ngôi để rút gọn 1 mảng thành q giá trị duy nhất 
+//điều_kiện ? giá_trị_nếu_đúng : giá_trị_nếu_sai;
+
+const numbers = [1, 5, 3, 7, 2];
+const total = numbers.reduce((acc, num) => {
+    return acc + num
+}, 0);
+
+//Bai 2
+const names = ["Alice", "Bob", "Christina", "Daniel"];
+const namLength = names.reduce((longest current) => {
+    return current.length > longest.length ? current : longest
+})
+    </script>
+</body>
+</html>

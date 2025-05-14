@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="greeting">Hello!</p>
+    <button id="changeBtn">Change Greeting</button>
+
+    <script>
+        // document.body.style.backgroundColor = 'lightyellow'
+        document.getElementById('greeting').textContent = 'Xin chào bạn!'
+        //Thuộc tính textContent để tahy đổi nội dung văn bản
+
+        //cách làm bài 1
+        //Chọn các phần tử = JS
+        const button = document.getElementById('changeBtn')
+        const greeting = document.getElementById('greeting')
+
+        //Gắn sự kiện 'click' vào nút
+        button.addEventListener('click', function() {
+            greeting.textContent = 'Xin chào các bạn!'
+        })
+
+// LUÔN LUÔN BẮT ĐẦU = DOCUMENT
+
+        //TRUY CẬP PHẦN TỬ 
+        //getElementById                        :truy cập theo ID
+        //getElementsByClassName                :truy cập theo CLASS
+        //getElementsByTagName                  :truy cập theo TAG NAME(div, p,..)
+        //querySelector                         :truy cập phần tử ĐẦU TIÊN 
+        //querySelectorAll                      :truy cập TẤT CẢ phần tử
+
+        //THAY ĐỔI NỘI DUNG
+        //element.textContent = "..."           :Thay nọi dung chữ, không hỗ trợ HTML
+        //element.innerHTML = "<b>...</b>"      :Thay nội dung có hỗ trợ HTML
+        //element.innerText = "..."             :giống textContent, nhưng ít dùng hơn
+
+        //THAY ĐỔI THUỘC TÍNH
+        //element.setAttribute("attr", "value") :Gán thuộc tính
+        //element.getAttribute("attr"           :Lấy giá trị thuộc tính
+        //element.removeAttribute("attr")       :Xoá thuộc tính
+
+        //THAY ĐỔI CLASS VÀ STYLE
+        //element.classList.add("ten-class");     // thêm class
+        // element.classList.remove("ten-class");  // xóa class
+        // element.classList.toggle("ten-class");  // có thì xóa, không có thì thêm
+
+        //element.style.color = "red";
+        // element.style.backgroundColor = "blue";
+        // element.style.display = "none";
+
+        //THÊM/ XOÁ PHẦN TỬ
+        //document.createElement("tag")         :Tạo phần tử mới
+        //element.appendChild(child)            :Thêm phần tử con vào cuối
+        //element.prepend(child)                :Thêm phân ftuwr con vào đầu
+        //element.remove()                      :Xoá chính nó khỏi DOM
+
+    </script>
+</body>
+</html>

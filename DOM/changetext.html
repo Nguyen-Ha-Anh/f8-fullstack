@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button id="resizeBtn">Tăng kích thước chữ</button>
+    <p>Đoạn văn 1</p>
+    <p>Đoạn văn 2</p>
+    <p>Đoạn văn 3</p> -->
+
+    <button id="bgBtn">Đổi màu nền xen kẽ</button>
+    <p>Box 1</p>
+    <p>Box 2</p>
+    <p>Box 3</p>
+    <p>Box 4</p>
+
+    <script>
+        // Bài 1: Thay đổi kích thước chữ
+        // const button = document.querySelector('#resizeBtn')
+
+        // button.addEventListener('click', function() {
+        //     const allP = document.querySelectorAll('p')
+        //     allP.forEach((p, index) => {
+        //         p.style.fontSize = '24px'
+        //     })
+        // })
+
+        //Bai 2: Doi mau nen xen ke
+        const button = document.querySelector('#bgBtn')
+
+        button.addEventListener('click', function() {
+            const allP = document.querySelectorAll('p')
+
+            allP.forEach((p, index) => {
+                if (index % 2 === 0) {
+                    p.style.color = 'lightgray'
+                }
+                else {
+                    p.style.color = 'white'
+                }
+            })
+        })
+    </script>
+</body>
+</html>

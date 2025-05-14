@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const employees = [
+{ id: 1, name: "Alice", age: 23, status: 'working' },
+{ id: 2, name: "Bob", age: 25, status: 'working' },
+{ id: 3, name: "John", age: 27, status: 'working' },
+{ id: 4, name: "David", age: 23, status: 'quited' },
+{ id: 5, name: "Eve", age: 20, status: 'working' },
+];
+
+
+const products = [
+{ id: 1, name: "Phone", price: 1200 },
+{ id: 2, name: "Laptop", price: 3000 },
+{ id: 3, name: "Tab", price: 2000 },
+{ id: 4, name: "PC", price: 800 },
+{ id: 5, name: "Monitor", price: 1500 },
+]
+
+
+const orders = [
+{ id: 1, employeeId: 1, productId: 4, quantity: 1 },
+{ id: 2, employeeId: 2, productId: 2, quantity: 4 },
+{ id: 3, employeeId: 1, productId: 5, quantity: 1 },
+{ id: 4, employeeId: 3, productId: 1, quantity: 2 },
+{ id: 5, employeeId: 2, productId: 5, quantity: 3 },
+{ id: 6, employeeId: 4, productId: 1, quantity: 1 },
+{ id: 7, employeeId: 5, productId: 3, quantity: 2 },
+];
+
+
+
+//Bai 1: Lay ra ds nhan vien dang lam viec
+const workingEmployees = employees.filter(e => e.status === 'working')
+console.log(workingEmployees)
+
+//Bai 2: Lay ra nhan vien lon tuoi nhat
+let maxAge = 0
+for (const employee of employees) { // for..of
+    if (employee.age > maxAge) maxAge = employee.age
+}
+console.log(maxAge)
+
+//Bai 3: Lay ra san phan gia re nhat
+let minPrice = products[0].price
+for (const product of products) {
+    if (product.price < minPrice) minPrice = product.price
+}
+
+const cheapProducts = products.filter(p => p.price === minPrice)
+console.log(cheapProducts)
+
+//Bai 4: Tim ra san pham ban chay nhat ( ban nhieu nhat ve bat so luong )
+const getTotalQuantity = (orders) => {
+    let total = 0
+    for (const order of orders) {
+        total += order.quantity
+    }
+    return total
+}
+
+for (const product of products) {
+    const productOrders = orders.filter(o => o.productID === product.id)
+    product['totalSale'] = getTotalQuantity(productOrders)
+}
+const bestSaleProducts = getItemByMaxValue(products, 'totalSale')
+console.log(bestSaleProducts)
+
+//Bai 5: Tim ra san phan doanh thu cao nhat ( nhieu tien nhat )
+
+
+//Bai 6: Tim ra nhan vien ban nhieu hang nhat
+
+
+//Bai 7: Tim ra nhan vien co doanh thu cao nhat
+const orderHashMap = {}
+
+for (const order of orders) {
+    const key = order.employeeIdemployeeId
+
+    if (!orderHashMap[]) {
+        orderHashMap[key] = []
+    }
+    orderHashMap[key].push(order)
+}
+
+for (const employee of employees) {
+    console.log(orderHashMap[employee.id])
+}
+
+//Bai 8: Tim ra san pham ban co doanh thu nhat cua moi nhan vien
+
+
+//Bai 9:Gia su nhan vien se nhan duoc hoa hong la 3%
+//-> tim hoa hong cho moi nhan vien
+
+
+//Bai 10: Sap xep nhan vien theo thu tu giam dan theo doanh thu
+
+    </script>
+</body>
+</html>

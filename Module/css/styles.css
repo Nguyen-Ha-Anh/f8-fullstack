@@ -452,7 +452,7 @@
   
   .creator {
     display: flex;
-    color: #cfcfcf;
+    color: #ffffff;
     display: flex;
     gap: 12px ;
     align-items: flex-start;
@@ -468,25 +468,21 @@
   }
   
   .creators__grid {
+    margin-top: 60px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    margin-top: 40px;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    flex: 1 0 0;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
   
   .creator-card {
     background: #3B3B3B;
     border-radius: 20px;
-    padding: 20px;
-    display: flex;
     position: relative;
     flex-direction: column;
+    padding: 20px;
+    display: flex;
     align-items: center;
-    gap: 20px;
+    height: 238px;
     flex: 1 0 0;
   }
 
@@ -510,12 +506,19 @@
 
   .creator-card p {
     color: var(--caption-label-text, #858584);
-    text-align: right;
     font-family: "Work Sans";
     font-size: 16px;
     font-style: normal;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
     font-weight: 400;
     line-height: 140%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
   }
 
   .creator-card strong {
@@ -526,12 +529,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: 140%;
-    margin-top: 5px;
   }
 
-  .creator-card .rank {
+  .creator__sales {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .rank {
     position: absolute;
-    align-items: flex-start;
     color: var(--caption-label-text, #858584);
     text-align: center;
     font-family: "Space Mono";
@@ -540,10 +546,14 @@
     font-weight: 400;
     line-height: 140%;
     display: grid;
-    width: 30px;
     gap: 10px;
-    border-radius: 20px;
     background: var(--Background, #2B2B2B);
+    width: 30px;
+    aspect-ratio: 1;
+    place-items: center;
+    border-radius: 50%;
+    top: 18px;
+    left: 20px;
   }
 
   .btn-view-rankings {
@@ -562,46 +572,42 @@
   }
   
   .categories__grid {
+    margin-top: 60px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
   
   .category {
-    position: relative;
-    text-align: center;
-    background: #3B3B3B;
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    align-self: stretch;
+  }
+
+  .category__overlay {
+    position: relative;
   }
 
   .category__img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: blur(6px);
-    transform: scale(1);
+    display: flex;
+    width: 240px;
+    height: 240px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(7.5px);
   }
 
   .category__icon {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 100px;
-    height: 100px;
     
   }
-  
-  .category__icon img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+
   .category span {
     display: flex;
     padding: 20px 30px 25px 30px;
@@ -611,10 +617,19 @@
     color: var(--White, #FFF);
     font-family: "Work Sans";
     font-size: 22px;
-    font-style: normal;
     font-weight: 500;
     line-height: 140%;
     text-transform: capitalize;
+    background-color: #3B3B3B;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .category__blur {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px 20px 0px 0px;
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(7.5px);
   }
   
   .nfts__grid {
@@ -713,13 +728,22 @@
   
   .magic {
     position: relative;
-    max-width: 1280px;
-    height: 680px;
     display: flex;
     align-items: flex-end;
-    overflow: hidden;
     color: white;
-    
+    width: 100%;
+    min-height: 593px;
+    max-height: 640px;
+    background: linear-gradient(180deg, rgba(162, 89, 255, 0.00) 0%, #A259FF 100%);
+    background-size: cover;
+  }
+
+  .magic__container {
+    padding: 60px 0;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
   }
   
   .magic__bg {
@@ -738,44 +762,56 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60%;
+    height: 100%;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #a259ff 100%);
     z-index: 2;
     
   }
   
   .magic__content {
-    position: absolute;
     z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    gap: 30px;
     flex: 1 0 0;
     display: flex;
     width: 1050px;
-    align-items: flex-end;
-    justify-content: center;
+    padding: 60px 0;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: end;
         
   }
 
   .magic_see {
     display: flex;
+    width: 198px;
     height: 60px;
+    padding: 22px 50px;
     justify-content: center;
     align-items: center;
     gap: 12px;
     border-radius: 20px;
     background: var(--Text, #FFF);
-    width: auto;
-    height: 60px;
-    position: relative;
-    right: 150px;
+    align-self: stretch;
+  }
+
+  .magic__creator {
+    background-color: #3B3B3B;
+    display: flex;
+    padding: 10px 20px;
+    align-items: center;
+    gap: 12px;
+    border-radius: 20px;
+    width: 151px;
+    height: 44px;
   }
 
   .magic_see .magic__access {
-    color: black;
+    color: var(--Background, #2B2B2B);
+    text-align: center;
+    font-family: "Work Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
   }
   .magic__left h2 {
     color: #FFF;
@@ -790,7 +826,6 @@
   .magic__left {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 30px;
   }
   
@@ -801,7 +836,6 @@
     height: 147px;
     padding: 30px;
     position:relative;
-    left: 200px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -809,7 +843,6 @@
     border-radius: 20px;
     background: rgba(59, 59, 59, 0.50);
     backdrop-filter: blur(5px);
-
   }
 
   .magic__timer p {
@@ -859,15 +892,6 @@
     line-height: 110%; 
   }
   
-  .creator {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #3b3b3b;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    width: fit-content;
-  }
   
   .creator img {
     width: 24px;

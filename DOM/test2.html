@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>Tiêu đề 1</h1>
+<h1>Tiêu đề 2</h1>
+<section>
+    <h1>Tiêu đề trong section</h1>
+    <article>Bài viết</article>
+</section>
+<p>Đoạn văn 1</p>
+<p>Đoạn văn 2</p> -->
+
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<p class="box">Box 3</p>
+<p>Paragraph</p>
+
+<script>
+    // function countTags(tagName) {
+    //     if (typeof tagName !== 'string') return 0
+    //     //typeof là từ khóa kiểm tra kiểu dữ liệu
+    //     const elements = document.getElementsByTagName(tagName)
+    //     console.log(element)
+    //     return elements.length
+    // }
+
+    // function countByClass(className) {
+    //     if (typeof className !== 'string') return 0
+    //     const elements = document.getElementsByClassName(className)
+    //     return elements.length
+    // }
+
+    function countByTagAndClass(tagName, className) {
+        if (typeof tagName !== 'string' || className !== 'string')
+            const elements = document.querySelectorAll(`${tagName}.${className}`)
+            return elements.length
+        
+        console.log(countByTagAndClass("div", "box"));   // 👉 2
+        console.log(countByTagAndClass("p", "box"));     // 👉 1
+        console.log(countByTagAndClass("section", "box")); // 👉 0
+
+    }
+</script>
+</body>
+</html>

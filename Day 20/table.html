@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table width="100%" border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>address</th>
+                <th>age</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Pham Cong Tin</td>
+                <td>Hoai Duc - Ha Noi</td>
+                <td>27</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Pham Cong Nam</td>
+                <td>Co Nhue - Ha Noi</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Pham Cong Bac</td>
+                <td>Soc Son - Ha Noi</td>
+                <td>22</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // const headers = [ 'id', 'name', 'address', 'age']
+
+        const employees = [
+            {id: 1, name: 'Pham Cong Tin', address: 'Hoai Duc - Ha Noi', age: 17},
+            {id: 2, name: 'Pham Cong Nam', address: 'Co Nhue- Ha Noi', age: 27},
+            {id: 3, name: 'Pham Cong Bac', address: 'Soc Son - Ha Noi', age: 22},
+        ]
+        // Buoc 1: tao bang
+        // Buoc 2: chia cot, hang
+        // BUoc 3: title 
+        //      (dung for),
+        
+        // Buoc 4: content
+        const tableHeaderE = document.querySelector('table thead tr')
+        headers.forEach(header => {
+            const cell = document.createElement('th')
+            cell.innerText = header
+            tableHeaderE.append(cell)
+        })
+
+        const tableBodyE = document.querySelector('table tbody')
+        employees.forEach(employee => {
+            const row = document.createElement('tr')
+            headers.forEach(header => {
+                const cell = document.createElement('td')
+                cell.innerText = employee[head]
+                row.append(cell)
+            })
+            tableBodyE.append(row)
+        })
+    </script>
+</body>
+</html>

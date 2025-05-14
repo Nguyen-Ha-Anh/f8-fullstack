@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const employees = [
+{ id: 1, name: "Alice", age: 23, status: 'working' },
+{ id: 2, name: "Bob", age: 25, status: 'working' },
+{ id: 3, name: "John", age: 27, status: 'working' },
+{ id: 4, name: "David", age: 23, status: 'quited' },
+{ id: 5, name: "Eve", age: 20, status: 'working' },
+];
+/**
+Bai: 1
+Lay ra ds nhan vien dang lam viec
+*/
+
+// PHÂN TÍCH ĐỀ BÀI 
+// Tìm nhân viên đang làm việc => status === 'working' 
+
+// Sử dụng hàm nào để lọc? FILTER
+// Cú pháp const ketQua = mangGoc.filter(item => điều_kiện);
+// Dùng FILTER để lọc ra phần tử thoả mãn điều kiện 
+const workingEmployees = employees.filter(emp => emp.status === 'working');
+console.log(workingEmployees)
+
+const products = [
+   { id: 1, name: "Phone", price: 1200 },
+   { id: 2, name: "Laptop", price: 3000  },
+   { id: 3, name: "Tab", price: 2000  },
+   { id: 4, name: "PC", price: 800  },
+   { id: 5, name: "Monitor", price: 1500  },
+];
+
+const productValue = products.filter(product => product.price >= 1500);
+console.log(productValue) 
+
+// BƯỚC 1: ĐẶT TÊN BIẾN VD: 'productValue'
+// BƯỚC 2: = (TÊN CỦA MẢNG ĐÓ) VD: products.filter 
+// BƯỚC 3: ĐẶT ĐIỀU KIỆN filter(product => product.(gọi biến muốn lọc) Đk ===, <, >, ...)
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//Bai 1
+const numbers = [1, 2, 3, 4, 5];
+const strings = numbers.map(n => String(n));
+console.log(strings)
+
+//Bai 2
+const people = [
+  { firstName: "John", lastName: "Doe" },
+  { firstName: "Jane", lastName: "Smith" }
+];
+// Dùng dấu + để nối chuỗi
+const fullName = people.map(p => p.firstName + '' + p.lastName)
+console.log(fullName)
+
+//Bai 3
+const fruits = ["apple", "banana", "cherry"];
+// Dùng index trong map để nối với phần tử
+const sum = fruits.map(f, index => `${index}: ${f}`);
+console.log(sum)
+
+//Bai 4
+const animals = ["cat", "dog", "elephant", "tiger"];
+const numberAnimals = animals.map((a, index) => `${index + 1} - ${a}`)
+// Trong map, khi bạn dùng nhiều tham số như (a, index), thì phải để 
+// cả hai trong dấu ngoặc tròn.
+console.log(numberAnimals)
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <button>Change Color</button> -->
+
+    <button>Ẩn nội dung</button>
+    <p>Đây là một đoạn văn bản có thể bị ẩn đi khi bạn bấm nút.</p>
+
+    <button id="changeColorBtn">Đổi màu các đoạn văn</button>
+
+    <p>Đoạn 1</p>
+    <p>Đoạn 2</p>
+    <p>Đoạn 3</p>
+    
+    <script>
+        // const button = document.getElementsByTagName('button')[0];
+        // //[0] de lay phan tu dau tien
+        // const greeting = document.getElementById('greeting')
+
+        // button.addEventListener('click', function() {
+        //     greeting.textContent = 'Xin chào, DOM!'
+        // })
+
+        // const button = document.querySelector('button')
+        // button.addEventListener('click', function() {
+        //     document.body.style.backgroundColor = 'lightblue'
+        // })
+
+        // const button = document.querySelector('button')
+        // const p = document.querySelector('p')
+
+        // button.addEventListener('click', function() {
+        //     p.style.display = 'none'
+        // })
+
+        const button = document.querySelector('#changeColorBtn')
+
+        button.addEventListener('click', function() {
+            const allP = document.querySelectorAll('p')
+            allP.forEach((p, index) => {
+                p.style.color = 'red'
+            })
+        })
+
+    </script>
+</body>
+</html>
