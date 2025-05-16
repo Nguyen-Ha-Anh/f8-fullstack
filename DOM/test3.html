@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 id="main-title">Chào bạn!</h1>
+    <button id="change-title">Đổi tiêu đề</button> -->
+
+    <p id="color-text">Đoạn văn này sẽ đổi màu</p>
+
+    <script>
+        //Bai1: thay doi noi dung khi an vao button
+        // const button = document.querySelector('#change-title')
+        // const title = document.querySelector('#main-title')
+        // button.addEventListener('click', function() {
+        //     title.textContent = 'Xin Chao DOM!'
+        // })
+
+        //Bai2: doi mau sac khi re chuot
+        const p = document.querySelector('#color-text')
+        p.addEventListener('mouseenter', function () {
+            p.style.color = 'red'
+        })
+        p.addEventListener('mouseleave', function() {
+            p.style.color = 'black'
+        })
+    </script>
+</body>
+</html>

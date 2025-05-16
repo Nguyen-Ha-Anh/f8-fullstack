@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <table cellspacing="0">
+          <thead>
+          <tr>
+          </tr>
+          </thead>
+    
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    <script>
+const data = [
+    { id: 1, name: 'Nguyễn Văn A', age: 22, email: 'a@example.com' },
+    { id: 2, name: 'Trần Thị B', age: 21, email: 'b@example.com' },
+    { id: 3, name: 'Lê Văn C', age: 23, email: 'c@example.com' }
+];
+
+const positions = [
+    { id: 1, position: 'Giám đốc' },
+    { id: 2, position: 'Nhân viên' },
+    { id: 3, position: 'Quản lý' }
+];
+
+const tableHeaderE = document.querySelector('table thead tr')
+headers.forEach(header => {
+    const cell = document.createElement('th')
+    cell.innerText = header.text 
+    tableHeaderE.append(cell)
+})
+
+const tableBodyE = document.querySelector('table tbody')
+employees.forEach(employee => {
+    const row = document.createElement('tr')
+    headers.forEach(header => {
+        const cell = document.createElement('td')
+    })
+})
+    </script>
+</body>
+</html>

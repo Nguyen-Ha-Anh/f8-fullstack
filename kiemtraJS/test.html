@@ -6,8 +6,308 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="main.js">
+    <script>
+const employees = [
+{ id: 1, name: "Alice", age: 23, status: 'working' },
+{ id: 2, name: "Bob", age: 25, status: 'working' },
+{ id: 3, name: "John", age: 27, status: 'working' },
+{ id: 4, name: "David", age: 23, status: 'quited' },
+{ id: 5, name: "Eve", age: 20, status: 'working' },
+];
+
+
+const products = [
+{ id: 1, name: "Phone", price: 1200 },
+{ id: 2, name: "Laptop", price: 3000 },
+{ id: 3, name: "Tab", price: 2000 },
+{ id: 4, name: "PC", price: 800 },
+{ id: 5, name: "Monitor", price: 1500 },
+]
+
+
+const orders = [
+{ id: 1, employeeId: 1, productId: 4, quantity: 1 },
+{ id: 2, employeeId: 2, productId: 2, quantity: 4 },
+{ id: 3, employeeId: 1, productId: 5, quantity: 1 },
+{ id: 4, employeeId: 3, productId: 1, quantity: 2 },
+{ id: 5, employeeId: 2, productId: 5, quantity: 3 },
+{ id: 6, employeeId: 4, productId: 1, quantity: 1 },
+{ id: 7, employeeId: 5, productId: 3, quantity: 2 },
+];
+
+
+/*
+Bai: 1
+Lay ra ds nhan vien dang lam viec
+
+
+Bai 2:
+Lay ra nhan vien lon tuoi nhat
+
+
+Bai 3:
+Lay ra san phan gia re nhat
+
+
+Bai 4:
+Tim ra san pham ban chay nhat ( ban nhieu nhat ve bat so luong )
+
+
+Bai 5:
+Tim ra san phan doanh thu cao nhat ( nhieu tien nhat )
+
+
+Bai 6:
+Tim ra nhan vien ban nhieu hang nhat
+
+
+Bai 7:
+Tim ra nhan vien co doanh thu cao nhat
+
+
+Bai 8:
+Tim ra san pham ban co doanh thu nhat cua moi nhan vien
+
+
+Bai 9:
+Gia su nhan vien se nhan duoc hoa hong la 3%
+-> tim hoa hong cho moi nhan vien
+
+
+Bai 10:
+Sap xep nhan vien theo thu tu giam dan theo doanh thu
+* */
+
+//Bai 1
+const workingEmployees = employees.filter(e => e.status === 'working')
+console.log(workingEmployees)
+
+//Bai 2
+const oldEmployees = employees.reduce((max, current) => {
+    return current.age > max.age ? current : max;
+})
+console.log(oldEmployees)
+
+//Bai 3
+const cheapProduct = products.reduce((min, p) => p.price < min.price ? p : min)
+console.log(cheapProduct)
+
+//Bai 4
+const getTotalQuantity = (orders) => {
+    let total = 0
+    for (const order of orders) {
+        total += order.quantity
+    }
+    return total
+}
+
+for (const product of products) {
+    const productOrders = orders.filter(o => o.productId === product.id)
+    product['totalSale'] = getTotalQuantity(productOrders)
+}
+
+function getItemsByMaxValue(arr, key) {
+    let max = Math.max(...arr.map(item => item[key]))
+    return arr.filter(item => item[key] === max)
+}
+
+const bestSaleProducts = getItemsByMaxValue(products, 'totalSale')
+console.log(bestSaleProducts)
+
+//Bai 5
+for (const product of products) {
+    const productOrders = orders.filter(o => o.productId === product.id)
+    product['totalSale'] = getTotalQuantity(productOrders)
         
+    product['totalAmount'] = getTotalQuantity(productOrders) * product.price
+}
+
+const bestSaleProductsAmount = getItemsByMaxValue(products, 'totalAmount')
+
+//Bai 6
+/*                                                               
+                   duyet tung nhan vien                                    
+                    => dung for..or                                        
+                           │                                               
+                           │                                               
+                           ▼                                               
+              loc cac don hang cua nhan vien do                            
+                    => dung filter                                         
+               DK: o.employeeId === emp.id                                 
+                           │                                               
+                           │                                               
+                           ▼                                               
+                tinh tong quantity cua don hang                            
+                   => dung reduce                                          
+                           │                                               
+                           │                                               
+                           ▼                                               
+                 tim nhan vien co Quantity lon nhat                        
+     bestSellerEmployee = getItemsByMaxValue(employees, 'totalQuantity'    
+                                                                        
+**/
+for (const employee of employees) {
+    const employeeOrders = orders.filter(o => o.employeeId === employee.id)
+    employee.getTotalQuantity = employeeOrders.reduce((sum, o) => sum + o.quantity, 0)
+}
+const bestSellerEmployee = getItemsByMaxValue(employees, 'totalQuantity')
+console.log(bestSellerEmployee)
+
+//Bai 7
+const toHasMap = (arr) => {
+    const result ={}
+
+    for (const e of arr) {
+        result[e.id] = e
+    }
+    return result
+}
+
+const productHasMap = toHasMap(products)
+console.log(productHasMap)
+for (const employee of employees) {
+    const employeeOrders = orders.filter(o => o.employeeId === employee.id)
+
+    let totalAmount = 0
+    for (const employeeOrder of employeeOrders) {
+        totalAmount += productHasMap[employeeOrder.productId].price * employeeOrder.quantity
+    }
+    console.log(employee.id, totalAmount)
+}
+
+//Bai 8
+/*
+              duyet qua tung nhan vien                        
+                        │                                     
+                        │                                     
+                        ▼                                     
+        lay tat ca don hang cua nhan vien do                  
+                                                              
+                        │                                     
+                        │                                     
+                        ▼                                     
+          tinh doanh thu tung san pham                        
+           dung productStats de gom sp                        
+                        │                                     
+                        │                                     
+                        ▼                                     
+           neu da co san pham thi cong tiep                   
+             exist.quantity += order.quantity                 
+             exist.total += amount                            
+                        │                                     
+                        │                                     
+                        ▼                                     
+             tim total sp lon nhat trong productStats         
+                                                              
+**/
+const result = employees.map(employee => {
+    const employeeOrders = orders.filter(o => o.employeeId === employee.id)
+    const productStats = []
+
+    for (const order of employeeOrders) {
+        const product = products.find(p => p.id === order.productId)
+        const exist = productStats.find(p => p.id === product.id)
+        const amount = product.price * order.quantity
+
+        if(exist) {
+            exist.quantity += order.quantity
+            exist.total += amount
+        }
+        else {
+            productStats.push ({
+                id: product.id,
+                name: product.name,
+                quantity: order.quantity,
+                total: amount
+            })
+        }
+    }
+
+    const maxProduct = getItemsByMaxValue(productStats, 'total')
+    return {
+        employee: employee.name,
+        bestProduct: maxProduct
+    }
+})
+console.log(result)
+
+//Bai 9
+/*
+        loc nhan vien da nghi viec          
+                 │                             
+                 │                             
+                 ▼                             
+        tim don hang cua nhan vien             
+           => dung filter                      
+                 │                             
+                 │                             
+                 ▼                             
+        tinh tong doanh thu                    
+          revenue = 0                          
+        su dung for..of                        
+                 │                             
+                 │                             
+                 ▼                             
+        tim san pham tuong ung                 
+           => dung find                        
+                 │                             
+                 │                             
+                 ▼                             
+       doanh thu = gia * so luong              
+    revenue =+ product.price * order.quantity  
+                 │                             
+                 │                             
+                 │                             
+                 ▼                             
+            tinh hoa hong 3%                        
+                                        
+**/
+const result = employees.map(employee => {
+    if (employee.status !== 'working')
+    return null
+
+    const employeeOrders = orders.filter(o => o.employeeId === employee.id)
+
+    let revenue = 0
+    for (const order of employeeOrders) {
+        const product = products.find(p => p.id === order.productId)
+        revenue += product.price * order.quantity
+    }
+
+    let comission = revenue * 0.03
+
+    return {
+        id: employee.id,
+        name: employee.name,
+        revenue: revenue,
+        comission: comission
+    }
+
+}).filter(e => e !== null)
+
+//Bai 10
+const revenueList = []
+for (const employee of employees) {
+    if (employee.status !== 'working') continue
+
+
+    const employeeOrders = orders.filter(o => o.employeeId === employee.id)
+
+    let revenue = 0
+    for (const order of employeeOrders) {
+        const product = products.find(p => p.id === order.productId)
+        revenue += product.price * order.quantity
+    }// Lay tu bai 9 de tinh tong doanh thu
+
+    revenueList.push ({
+        id: employee.id,
+        name: employee.name,
+        revenue: revenue
+    })
+}
+revenueList.sort((a,b) => b.revenue - a.revenue)
+console.log(revenueList)
+
     </script>
 </body>
 </html>

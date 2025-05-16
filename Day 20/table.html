@@ -2,73 +2,161 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Title</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+    " rel="stylesheet">
 </head>
+
+<style>
+    .container {
+        width: 600px;
+        margin: auto;
+    }
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+    table thead tr th {
+        border-top: 1px solid #ccc;
+    }
+    td, th {
+        padding: 12px;
+        border-bottom: 1px solid #ccc;
+        font-size: 20px;
+    }
+    .edit-btn {
+        color: green;
+    }
+    .del-btn {
+        color: red;
+    }
+    .text-align-right {
+        text-align: right;
+    }
+    .text-align-center {
+        text-align: center;
+    }
+    .container input {
+        padding: 12px;
+        width: 100%;
+        font-size: 24px;
+    }
+</style>
+
 <body>
-    <table width="100%" border="1" cellspacing="0">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>address</th>
-                <th>age</th>
-            </tr>
-        </thead>
+  <div class="container">
+    <input name="search" placeholder="search employees"/>
+    <table cellspacing="0">
+      <thead>
+      <tr>
+      </tr>
+      </thead>
 
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Pham Cong Tin</td>
-                <td>Hoai Duc - Ha Noi</td>
-                <td>27</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Pham Cong Nam</td>
-                <td>Co Nhue - Ha Noi</td>
-                <td>17</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Pham Cong Bac</td>
-                <td>Soc Son - Ha Noi</td>
-                <td>22</td>
-            </tr>
-        </tbody>
+      <tbody>
+      </tbody>
     </table>
+  </div>
+  <script>
+    // const headers = [
+    //   'id', 'name', 'address', 'age'
+    // ]
+    const headers = [
+      { name: 'id', text: 'Id', align: 'center' },
+      { name: 'name', text: 'Ten' },
+      { name: 'address', text: 'Dia Chi' },
+      { name: 'age', text: 'Tuoi', align: 'right' },
+      { name: 'action', text: 'Action', align: 'center' },
+    ]
 
-    <script>
-        // const headers = [ 'id', 'name', 'address', 'age']
+    const employees = [
+      {id: 1, name: 'Pham Cong Tin', address: 'Hoai Duc - Ha Noi', age: 27},
+      {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27},
+      {id: 3, name: 'Pham Xuan Bac', address: 'Soc Son - Ha Noi', age: 27},
+    ]
+    const tableHeaderE = document.querySelector('table thead tr')
+    headers.forEach(header => {
+      const cell = document.createElement('th')
+      cell.innerText = header.text
+      tableHeaderE.append(cell)
+    })
 
-        const employees = [
-            {id: 1, name: 'Pham Cong Tin', address: 'Hoai Duc - Ha Noi', age: 17},
-            {id: 2, name: 'Pham Cong Nam', address: 'Co Nhue- Ha Noi', age: 27},
-            {id: 3, name: 'Pham Cong Bac', address: 'Soc Son - Ha Noi', age: 22},
-        ]
-        // Buoc 1: tao bang
-        // Buoc 2: chia cot, hang
-        // BUoc 3: title 
-        //      (dung for),
-        
-        // Buoc 4: content
+    const renderTable = (employees) => {
         const tableHeaderE = document.querySelector('table thead tr')
+        tableHeaderE.innerHTML = ''
+
         headers.forEach(header => {
             const cell = document.createElement('th')
-            cell.innerText = header
+            cell.innerText = header.text
             tableHeaderE.append(cell)
+ 
         })
 
         const tableBodyE = document.querySelector('table tbody')
-        employees.forEach(employee => {
-            const row = document.createElement('tr')
-            headers.forEach(header => {
-                const cell = document.createElement('td')
-                cell.innerText = employee[head]
-                row.append(cell)
-            })
-            tableBodyE.append(row)
-        })
-    </script>
+
+    tableBodyE.innerHTML = ''
+    
+    employees.forEach(employee => {
+      const row = document.createElement('tr')
+      headers.forEach(header => {
+        const cell = document.createElement('td')
+        if (header.name === 'action') {
+          const editBtn = document.createElement('span')
+          const delBtn = document.createElement('span')
+
+          editBtn.setAttribute('class', 'mdi mdi-pencil-outline edit-btn')
+          delBtn.setAttribute('class', 'mdi mdi-trash-can-outline del-btn')
+          cell.appendChild(editBtn)
+          cell.appendChild(delBtn)
+        }
+        else {
+            cell.innerText = employee[header.name]
+        }
+
+        if (header.align) cell.setAttribute('class', `text-align-${header.align}`)
+        row.append(cell)
+      })
+      tableBodyE.append(row)
+    })
+    }
+
+    
+
+    const inputE = document.querySelector('.container input[name="search"]')
+    inputE.addEventListener('input', (e) => {
+        console.log(e.target.value.toLowerCase())
+        const filteredEmployees = employees.filter(
+            employee => employee.name.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+        console.log(filteredEmployees)
+        renderTable(filteredEmployees)
+    }) 
+    renderTable(employees)
+
+    /*
+    const tableHeaderE = document.querySelector('table thead tr')
+    // bind data for header
+    headers.forEach(header => {
+      tableHeaderE.innerHTML += `<th>${header}</th>`
+    })
+    // for table body
+    const tableBodyE = document.querySelector('table tbody')
+
+
+    let rowsHtml = ''
+    employees.forEach(employee => {
+      // bind the row
+      rowsHtml += `<tr>`
+
+      headers.forEach(header => {
+        rowsHtml += `<td>${employee[header]}</td>`
+      })
+
+      rowsHtml += `</tr>`
+    })
+    tableBodyE.innerHTML = rowsHtml
+   */
+
+  </script>
 </body>
 </html>

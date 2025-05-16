@@ -36,9 +36,10 @@
     // }
 
     function countByTagAndClass(tagName, className) {
-        if (typeof tagName !== 'string' || className !== 'string')
+        if (typeof tagName !== 'string' || className !== 'string') {
             const elements = document.querySelectorAll(`${tagName}.${className}`)
             return elements.length
+        }
         
         console.log(countByTagAndClass("div", "box"));   // 👉 2
         console.log(countByTagAndClass("p", "box"));     // 👉 1

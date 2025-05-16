@@ -86,6 +86,46 @@ console.log(workingEmployees)
 const oldEmployees = employees.reduce((max, current) => {
     return current.age > max.age ? current : max;
 })
+console.log(oldEmployees)
+
+//Bai 3
+const cheapProduct = products.reduce((min, p) => p.price < min.price ? p : min)
+console.log(cheapProduct)
+
+//Bai 4
+const getTotalQuantity = (orders) => {
+    let total = 0
+    for (const order of orders) {
+        total += order.quantity
+    }
+    return total
+}
+
+for (const product of products) {
+    const productOrders = orders.filter(o => o.productId === product.id)
+    product['totalSale'] = getTotalQuantity(productOrders)
+}
+
+function getItemsByMaxValue(arr, key) {
+    let max = Math.max(...arr.map(item => item[key]))
+    return arr.filter(item => item[key] === max)
+}
+
+const bestSaleProducts = getItemsByMaxValue(products, 'totalSale')
+console.log(bestSaleProducts)
+
+//Bai 5
+for (const product of products) {
+    const productOrders = orders.filter(o => o.productId === product.id)
+    product['totalSale'] = getTotalQuantity(productOrders)
+        
+    product['totalAmount'] = getTotalQuantity(productOrders) * product.price
+}
+
+const bestSaleProductsAmount = getItemsByMaxValue(products, 'totalAmount')
+
+//Bai 6
+
 
     </script>
 </body>
