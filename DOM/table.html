@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 350px;
+        margin: auto;
+    }
+
+    .container input {
+        padding: 12px;
+        font-size: 22px;
+        width: 100%;
+    }
+
+    .container .dropdown {
+        max-height: 250px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 0 0.5px;
+        overflow-y: scroll;
+    }
+
+    .dropdown-item {
+        padding: 8px;
+    }
+</style>
+<body>
+    <div class="container">
+        <input placeholder="Search fruit...">
+        <div class="dropdown">
+        </div>
+    </div>
+
+    <script>
+        const fruits = ["Apple", "Orange", "Banana", "Avocado", "Grape", "Guava", "Watermelon"];
+    
+        const renderDropdown = (list) => { //nhan 1 ham list
+            const dropdown = document.querySelector('dropdown') //lay the .dropdown
+
+            dropdown.innerHTML = '' // xoa noi dung cu di truoc khi render lai
+
+            list.forEach(item => { // duyet qua list de tao tung dong
+                const div = document.createElement('div') // tao 1 the div moi cho moi item
+
+                div.textContent = item // gan ten trai cay
+                dropdown.appendChild(div) // them dong do vao .dropdown
+            })
+        }
+    </script>
+</body>
+</html>
