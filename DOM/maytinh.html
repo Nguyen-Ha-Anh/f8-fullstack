@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>+</button>
+    <button>=</button>
+    <div id="screen"></div>
+
+    <script>
+        const buttons = document.querySelectorAll('button')
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                screen.innerText += btn.innerText
+            })
+        })
+
+        
+    </script>
+</body>
+</html>

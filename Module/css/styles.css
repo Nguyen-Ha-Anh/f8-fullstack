@@ -1,5 +1,7 @@
 
 *, *::before, *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     user-select: none;
   }
@@ -14,6 +16,7 @@
     background-color: #2B2B2B;
     color: #ffffff;
     line-height: 1.6;
+    overflow-x: hidden;
   
   }
 
@@ -36,6 +39,7 @@
   }
   
   .container {
+    width: 100%;
     max-width: 1050px;
     margin: 0 auto;
     padding: 80px 0;

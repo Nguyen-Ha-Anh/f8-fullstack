@@ -9,9 +9,10 @@
 </head>
 
 <style>
-        .container {
-        width: 600px;
-        margin: auto;
+    .container {
+    width: 600px;
+    margin: auto;
+    user-select: none;
     }
     table {
         width: 100%;
@@ -135,133 +136,139 @@
     </div>
   </div>
   <script>
-    // const headers = [
-    //   'id', 'name', 'address', 'age'
-    // ]
-    const headers = [
-      { name: 'id', text: 'Id', align: 'center' },
-      { name: 'name', text: 'Ten' },
-      { name: 'address', text: 'Dia Chi' },
-      { name: 'age', text: 'Tuoi', align: 'right' },
-      { name: 'action', text: 'Action', align: 'center' },
-    ]
+  const headers = [
+    { name: 'id', text: 'Id', align: 'center' },
+    { name: 'name', text: 'Ten' },
+    { name: 'address', text: 'Dia Chi' },
+    { name: 'age', text: 'Tuoi', align: 'right' },
+    { name: 'action', text: 'Action', align: 'center' },
+  ]
 
-    const employees = [
-      {id: 1, name: 'Tran Pham Tin', address: 'Hoai Duc - Ha Noi', age: 27},
-      {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27},
-      {id: 3, name: 'Pham Nguyen Bac', address: 'Soc Son - Ha Noi', age: 27},
-    ]
+  const employees = [
+    {id: 1, name: 'Tran Pham Tin', address: 'Hoai Duc - Ha Noi', age: 27},
+    {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27},
+    {id: 3, name: 'Pham Nguyen Bac', address: 'Soc Son - Ha Noi', age: 27},
+  ]
 
-    const renderTable = (employees) => {
-      const tableHeaderE = document.querySelector('table thead tr')
+  let editingId = null
 
-      tableHeaderE.innerHTML = ''
+  const renderTable = (list) => {
+    const tableHeaderE = document.querySelector('table thead tr')
+    tableHeaderE.innerHTML = ''
+    headers.forEach(header => {
+      const cell = document.createElement('th')
+      cell.innerText = header.text
+      tableHeaderE.append(cell)
+    })
 
+    const tableBodyE = document.querySelector('table tbody')
+    tableBodyE.innerHTML = ''
+
+    list.forEach(employee => {
+      const row = document.createElement('tr')
       headers.forEach(header => {
-        const cell = document.createElement('th')
-        cell.innerText = header.text
-        tableHeaderE.append(cell)
+        const cell = document.createElement('td')
+        if (header.name === 'action') {
+          const editBtn = document.createElement('span')
+          const delBtn = document.createElement('span')
+
+          editBtn.setAttribute('class', 'mdi mdi-pencil-outline edit-btn')
+          editBtn.style.cursor = 'pointer'
+          editBtn.addEventListener('click', () => openEditPopup(employee))
+
+          delBtn.setAttribute('class', 'mdi mdi-trash-can-outline del-btn')
+          delBtn.style.cursor = 'pointer'
+          delBtn.addEventListener('click', () => deleteEmployee(employee.id))
+
+          cell.appendChild(editBtn)
+          cell.appendChild(delBtn)
+        } else {
+          cell.innerText = employee[header.name]
+        }
+        if (header.align) cell.classList.add(`text-align-${header.align}`)
+        row.append(cell)
       })
+      tableBodyE.append(row)
+    })
+  }
 
-      const tableBodyE = document.querySelector('table tbody')
+  const popup = document.getElementById('popup')
+  document.querySelector('.search-bar button').addEventListener('click', () => openAddPopup())
 
-      tableBodyE.innerHTML = ''
+  function openAddPopup() {
+    editingId = null
+    document.getElementById('name').value = ''
+    document.getElementById('address').value = ''
+    document.getElementById('age').value = ''
+    popup.style.display = 'flex'
+  }
 
-      employees.forEach(employee => {
-        const row = document.createElement('tr')
-        headers.forEach(header => {
-          const cell = document.createElement('td')
-          if (header.name === 'action') {
-            const editBtn = document.createElement('span')
-            const delBtn = document.createElement('span')
+  function openEditPopup(employee) {
+    editingId = employee.id
+    document.getElementById('name').value = employee.name
+    document.getElementById('address').value = employee.address
+    document.getElementById('age').value = employee.age
+    popup.style.display = 'flex'
+  }
 
-            editBtn.setAttribute('class', 'mdi mdi-pencil-outline edit-btn')
-            delBtn.setAttribute('class', 'mdi mdi-trash-can-outline del-btn')
-            cell.appendChild(editBtn)
-            cell.appendChild(delBtn)
-          }
-          else {
-            cell.innerText = employee[header.name]
-          }
+  function closePopup() {
+    popup.style.display = 'none'
+  }
 
-          if (header.align) cell.setAttribute('class', `text-align-${header.align}`)
-          row.append(cell)
-        })
-        tableBodyE.append(row)
-      })
+  function clearForm() {
+    document.getElementById('name').value = ''
+    document.getElementById('address').value = ''
+    document.getElementById('age').value = ''
+  }
+
+  function saveEmployee() {
+    const name = document.getElementById('name').value.trim()
+    const address = document.getElementById('address').value.trim()
+    const age = document.getElementById('age').value.trim()
+
+    if (!name || !address || !age) {
+      alert('Điền đầy đủ thông tin!')
+      return
     }
 
-    // get input element
-    const inputE = document.querySelector('.container input[name="search"]')
-    inputE.addEventListener('input', (e) => {
-      const filteredEmployees = employees.filter(
-        employee => employee.name.toLowerCase().includes(e.target.value)
-      )
-
-      renderTable(filteredEmployees)
-    })
+    if (editingId !== null) {
+      const employee = employees.find(emp => emp.id === editingId)
+      if (employee) {
+        employee.name = name
+        employee.address = address
+        employee.age = parseInt(age)
+      }
+    } else {
+      const newId = employees.length ? employees[employees.length - 1].id + 1 : 1
+      employees.push({ id: newId, name, address, age: parseInt(age) })
+    }
 
     renderTable(employees)
-    /*
-    const tableHeaderE = document.querySelector('table thead tr')
-    // bind data for header
-    headers.forEach(header => {
-      tableHeaderE.innerHTML += `<th>${header}</th>`
-    })
-    // for table body
-    const tableBodyE = document.querySelector('table tbody')
-
-
-    let rowsHtml = ''
-    employees.forEach(employee => {
-      // bind the row
-      rowsHtml += `<tr>`
-
-      headers.forEach(header => {
-        rowsHtml += `<td>${employee[header]}</td>`
-      })
-
-      rowsHtml += `</tr>`
-    })
-    tableBodyE.innerHTML = rowsHtml
-   */
-    
-   const popup = document.getElementById('popup')
-   document.querySelector('button').addEventListener('click', function () {
-    popup.style.display = 'flex'
-   })
-
-   function closePopup() {
-    popup.style.display = 'none'
-   }
-
-   function saveEmployee() {
-  const name = document.getElementById('name').value.trim()
-  const address = document.getElementById('address').value.trim()
-  const age = document.getElementById('age').value.trim()
-
-  if (!name || !address || !age) {
-    alert('Điền vào rồi muốn gì thì muốn')
-    return
+    closePopup()
+    clearForm()
   }
 
-  if (editingId) {
-    const employee = employees.find(employee => employee.id === editingId)
-    if (employee) {
-      employee.name = name
-      employee.address = address
-      employee.age = parseInt(age)
+  function deleteEmployee(id) {
+    const confirmed = confirm('Nghĩ kỹ chưa???')
+    if (confirmed) {
+      const index = employees.findIndex(emp => emp.id === id)
+      if (index !== -1) {
+        employees.splice(index, 1)
+        renderTable(employees)
+      }
     }
-    let editingId = null  
-  } else {
-    const newId = employees.length ? employees[employees.length - 1].id + 1 : 1
-    employees.push({ id: newId, name, address, age: parseInt(age) })
   }
+
+  const inputE = document.querySelector('.container input[name="search"]')
+  inputE.addEventListener('input', (e) => {
+    const filtered = employees.filter(emp =>
+      emp.name.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+    renderTable(filtered)
+  })
 
   renderTable(employees)
-  closePopup()
-  clearForm()
-}
+
   </script>
 </body>
 </html>

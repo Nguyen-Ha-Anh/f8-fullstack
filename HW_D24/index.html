@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      background-color: #001f3f;
+      color: white;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+  }
+
+  .game_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1000px;
+    gap: 30px;
+  }
+
+  .question {
+    position: relative;
+  }
+
+  .question-title {
+      border: 1px solid #ccc;
+      padding: 50px 100px;
+      font-weight: 600;
+  }
+
+  .question-options {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .question-option {
+      background-color: #a6bccf;
+      border: 1px solid #ccc;
+      padding: 20px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+  }
+  
+  .question-option:hover {
+    background-color: #005fa3;
+  }
+
+  .check-btn {
+    background-color: #c32400;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    transition: background-color 0.2s;
+    margin-top: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .check-btn:active {
+      background-color: #9ec2bb;
+      user-select: none;
+  }
+
+  .milestone-container {
+    background-color: #222;
+    padding: 10px;
+    color: white;
+    width: 220px;
+    border: 2px solid white;
+    border-radius: 10px;
+  }
+
+  #milestone-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #milestone-list li {
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #milestone-list li:nth-child(1),
+  #milestone-list li:nth-child(6),
+  #milestone-list li:nth-child(11) {
+    background-color: rgb(4, 4, 99);
+    border: 1px solid gold;
+    border-radius: 10px;
+    color: gold;
+    font-size: 600;
+  }
+
+  #time {
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #222;
+    min-width: 20px;
+    text-align: center;
+    
+  }
+
+
+
+</style>
+
+<body>
+  <div class="game_container">
+    <div id="time">30</div>
+    <div class="question">
+    <div class="question-title">How are you</div>
+        <div class="question-options">
+        <div class="question-option" value="a">A: OK</div>
+        <div class="question-option" value="b">B: hmm</div>
+        <div class="question-option" value="c">C: good</div>
+        <div class="question-option" value="d">D: i'm bang</div>
+      </div>
+      
+      <div class="check-btn">Check</div>
+    </div>
+    
+    
+    <div class="milestone-container">
+      <ul id="milestone-list">
+        <li class="milestone">150.000.000đ</li>
+        <li class="milestone">85.000.000đ</li>
+        <li class="milestone">60.000.000đ</li>
+        <li class="milestone">40.000.000đ</li>
+        <li class="milestone">30.000.000đ</li>
+        <li class="milestone">22.000.000đ</li>
+        <li class="milestone">14.000.000đ</li>
+        <li class="milestone">10.000.000đ</li>
+        <li class="milestone">5.000.000đ</li>
+        <li class="milestone">3.000.000đ</li>
+        <li class="milestone">2.000.000đ</li>
+        <li class="milestone">1.000.000đ</li>
+        <li class="milestone">600.000đ</li>
+        <li class="milestone">400.000đ</li>
+        <li class="milestone">200.000đ</li>
+      </ul>
+    </div>
+</div>
+
+<script>
+  const timeRef = document.getElementById('time')
+  let countdown = 3
+
+  const setTime = () => {
+    timeRef.innerText = --countdown
+
+    if (countdown === 0) {
+      clearInterval(itv)
+    }
+  }
+
+  const itv = setInterval(setTime, 1000)
+
+</script>
+
+<script type="module" src="referances.js"></script>
+<script type="module" src="const.js"></script>
+<script type="module" src="render.js"></script>
+</body>
+</html>

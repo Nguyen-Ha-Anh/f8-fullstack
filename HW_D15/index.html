@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const colors = Array.from({ length: 20000 }, (_, i) => ({
+        id: i + 1,
+        name: `color ${i + 1}`
+        }));
+        const flowers = Array.from({ length: 400000 }, (_, i) => ({
+            id: i + 1,
+            name: `flower ${i + 1}`,
+            colorId: Math.floor(Math.random() * 20000) + 1 // random colorId between 1 and 2000
+        }));
+
+        const colorMap = new Map()
+
+        colors.forEach(color => {
+            colorMap.set(color.id, color)
+        })
+
+        const result = flowers.map(flower => {
+            
+            return {
+                ...flower,
+                color: colorMap.get(flower.colorId) || null
+            }
+        })
+
+        console.log(result)
+    </script>
+</body>
+</html>
