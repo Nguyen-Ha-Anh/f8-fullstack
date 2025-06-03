@@ -154,9 +154,9 @@
   ]
 
   const employees = [
-    {id: 1, name: 'Tran Pham Tin', address: 'Hoai Duc - Ha Noi', age: 27},
-    {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27},
-    {id: 3, name: 'Pham Nguyen Bac', address: 'Soc Son - Ha Noi', age: 27},
+    {id: 1, name: 'Tran Pham Tin', address: 'Hoai Duc - Ha Noi', age: 27, city: 'Ha Noi'},
+    {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 27, city: 'Ha Noi'},
+    {id: 3, name: 'Pham Nguyen Bac', address: 'Soc Son - Ha Noi', age: 27, city: 'Ha Noi'},
   ]
 
   let editingId = null
@@ -230,6 +230,7 @@
     document.getElementById('name').value = ''
     document.getElementById('address').value = ''
     document.getElementById('age').value = ''
+    document.getElementById('city').value = ''
   }
 
   function saveEmployee() {
