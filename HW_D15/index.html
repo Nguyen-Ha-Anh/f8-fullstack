@@ -8,30 +8,35 @@
 <body>
     <script>
         const colors = Array.from({ length: 20000 }, (_, i) => ({
-        id: i + 1,
-        name: `color ${i + 1}`
+            id: i + 1,
+            name: `color ${i + 1}`
         }));
         const flowers = Array.from({ length: 400000 }, (_, i) => ({
             id: i + 1,
             name: `flower ${i + 1}`,
-            colorId: Math.floor(Math.random() * 20000) + 1 
+            colorId: Math.floor(Math.random() * 20000) + 1 // random colorId between 1 and 2000
         }));
 
-        const colorMap = new Map()
+        // sap xep tang dan 
+        flowers.sort((a, b) => a.colorId - b.colorId)
+        colors.sort((a, b) => a.id - b.id)
 
-        colors.forEach(color => {
-            colorMap.set(color.id, color)
-        })
+        let i = 0
+        let z = 0
+        const result = []
 
-        const result = flowers.map(flower => {
-            
-            return {
-                ...flower,
-                color: colorMap.get(flower.colorId) || null
-            }
-        })
+        for (i < colors.length && z < flowers.length) {
+            const flower = flowers[z]
+            const color = colors[i]
 
-        console.log(result)
+            flowers.colorId === color.id
+            ? (result.push({...flower, colorName: color.name}), z++)
+            : flower.colorId < color.id
+            ? z++
+            : i++
+        }
+
+        console.log(result.slice(0, 10));
     </script>
 </body>
 </html>

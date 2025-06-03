@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        padding: 20px;
+        margin: auto;
+    }
+
+    table {
+        width: 100%;
+        text-align: center;
+    }
+
+    th {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody></tbody>
+    </table>
+
+    <script>
+    const headers = ['name', 'price', 'quantity', 'total']
+    
+    const products = [
+        { name: 'iPhone', price: 1000, quantity: 5 },
+        { name: 'Samsung', price: 900, quantity: 3 },
+        { name: 'Oppo', price: 500, quantity: 10 }
+    ];
+
+    const tableHeaderE = document.querySelector('table thead tr')
+    tableHeaderE.innerText = ''
+
+    headers.forEach(header => {
+        const cell = document.createElement('th')
+        cell.innerText = header
+        tableHeaderE.append(cell)
+    })
+
+    const tableBodyE = document.querySelector('table tbody')
+    tableBodyE.innerText = ''
+
+    products.forEach(product => {
+        const row = document.createElement('tr')
+
+        headers.forEach(header => {
+            const cell = document.createElement('td')
+            if (header === 'total') {
+                cell.innerText = product.price * product.quantity
+            } else {
+
+                cell.innerText = product[header]
+            }
+            row.append(cell)
+        })
+
+        tableBodyE.append(row)
+    })
+    </script>
+</body>
+</html>

@@ -38,10 +38,10 @@
     .text-align-center {
         text-align: center;
     }
-    .container input {
+    .container input, .container select {
         padding: 12px;
         width: 100%;
-        font-size: 24px;
+        font-size: 15px;
     }
     .search-bar {
         display: flex;
@@ -127,6 +127,14 @@
                 <input type="text" id="name" placeholder="Name">
                 <input type="text" id="address" placeholder="Address">
                 <input type="number" id="age" placeholder="Age">
+                <select name="city" id="city">
+                  <option value="">--- Select city ---</option>
+                  <option value="Ha Noi">Ha Noi</option>
+                  <option value="Sai Gon">Sai Gon</option>
+                  <option value="Da Nang">Da Nang</option>
+                  <option value="Hai phong">Hai Phong</option>
+                  <option value="Phan Thiet">Phan Thiet</option>
+                </select>
                 <div class="button-group">
                     <button type="button" class="cancel" onclick="closePopup()">Canccel</button>
                     <button type="button" class="save" onclick="saveEmployee()">Save</button>
@@ -141,6 +149,7 @@
     { name: 'name', text: 'Ten' },
     { name: 'address', text: 'Dia Chi' },
     { name: 'age', text: 'Tuoi', align: 'right' },
+    { name: 'city', text: 'Thanh pho', align: 'center' },
     { name: 'action', text: 'Action', align: 'center' },
   ]
 
@@ -200,6 +209,7 @@
     document.getElementById('name').value = ''
     document.getElementById('address').value = ''
     document.getElementById('age').value = ''
+    document.getElementById('city').value = ''
     popup.style.display = 'flex'
   }
 
@@ -208,6 +218,7 @@
     document.getElementById('name').value = employee.name
     document.getElementById('address').value = employee.address
     document.getElementById('age').value = employee.age
+    document.getElementById('city').value = employee.city
     popup.style.display = 'flex'
   }
 
@@ -225,8 +236,9 @@
     const name = document.getElementById('name').value.trim()
     const address = document.getElementById('address').value.trim()
     const age = document.getElementById('age').value.trim()
+    const city = document.getElementById('city').value.trim()
 
-    if (!name || !address || !age) {
+    if (!name || !address || !age || !city) {
       alert('Điền đầy đủ, đừng để lói nhiều!')
       return
     }
@@ -237,11 +249,17 @@
         employee.name = name
         employee.address = address
         employee.age = parseInt(age)
+        employee.city = city
+
+        employee.searchStr = `${name}|${address}|${city}|${employee.age}`.toLowerCase()
       }
     } else {
       const newId = employees.length ? employees[employees.length - 1].id + 1 : 1
-      employees.push({ id: newId, name, address, age: parseInt(age) })
+      employees.push({ id: newId, name, address, age: parseInt(age), city})
     }
+
+    employee.searchStr = `${name}|${address}|${city}|${employee.age}`.toLowerCase()
+    employees.push(employee)
 
     renderTable(employees)
     closePopup()

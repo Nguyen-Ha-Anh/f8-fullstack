@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="
+    https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css
+    " rel="stylesheet">
+</head>
+<style>
+
+    table {
+        width: 600px;
+        margin: auto;
+    }
+
+    td, th {
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    td:first-child, td:last-child{
+        text-align: right;
+    }
+
+    .editBtn {
+        color: green;
+    }
+
+    .delBtn {
+        color: red;
+    }
+
+</style>
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+
+        const headers = [
+            'id','name', 'address', 'age', 'action'
+        ]
+
+        const employees = [
+            {id: 1, name: 'Pham Cong Tin', address: 'Hoai Duc - Ha Noi', age: 27},
+            {id: 2, name: 'Nguyen Nam Tao', address: 'Co Nhue - Ha Noi', age: 17},
+            {id: 3, name: 'Pham Xuan Bac', address: 'Soc Son - Ha Noi', age: 27}
+        ]
+
+        const tableHeaderE = document.querySelector('table thead tr')
+        headers.forEach(header => {
+            const cell = document.createElement('th')
+            cell.innerText = header
+            tableHeaderE.append(cell)
+        })
+
+        const tableBodyE = document.querySelector('table tbody')
+        employees.forEach(employee => {
+            const row = document.createElement('tr')
+            headers.forEach(header => {
+                const cell = document.createElement('td')
+                if (header === 'action'){
+                    const editBtn = document.createElement('span')
+                    const delBtn = document.createElement('span')
+
+                    editBtn.setAttribute('class', 'mdi mdi-pencil-outline editBtn')
+                    delBtn.setAttribute('class', 'mdi mdi-trash-can-outline delBtn')
+
+                    cell.append(editBtn)
+                    cell.append(delBtn)
+                }
+                else {
+                    cell.innerText = employee[header]
+                }
+                row.append(cell)
+            })
+
+            tableBodyE.append(row)
+        })
+
+        tableBodyE.innerHTML = rowsHtml
+    </script>
+</body>
+</html>

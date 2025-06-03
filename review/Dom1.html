@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="headingTmp">My Header</h1>
+    <h2 class="heading2">My Header 2</h2>
+
+    <div class="container">
+        <h2 class="heading2">My header 2 trong dev</h2>
+        <h2 class="heading2">My header 2 trong dev</h2>
+        <a href="#">my link</a>
+
+        <script>
+            console.log(document.getElementsByName('h2'))
+
+            const headingE = document.querySelector('.container .heading2:last-of-type')
+
+            // headingE.innerHTML = <span>test</span>
+
+            headingE.setAttribute('name', 'hihi')
+
+            // console.log(getAttribute('name'))
+
+            headingE.style.color = 'red'
+
+            const pE = document.createElement('p')
+            pE.innerText = 'test thui'
+
+            document.body.querySelector('.container').appendChild(pE)
+
+            headingE.onclick = () => {
+                console.log('click vao day')
+            }
+        </script>
+    </div>
+</body>
+</html>

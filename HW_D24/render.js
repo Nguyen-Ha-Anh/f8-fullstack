@@ -2,7 +2,21 @@ import {questions} from "./const.js";
 import {questionRef} from "./referances.js";
 
 // todo: need to get next question / first question
-const curQuestion = questions[0]
+let curQuestion = questions[0]
+let currentIndex = 0
+let timeRef = document.getElementById('time')
+let countdown = 30
+let itv
+
+itv = setInterval(() => {
+  timeRef.innerText = countdown;
+  countdown--;
+  if (countdown < 0) {
+    clearInterval(itv);
+    alert("het code!");
+    moveToNext();
+  }
+}, 1000);
 
 const onShowQuestion = () => {
   // console.log(curQuestion)
@@ -10,14 +24,19 @@ const onShowQuestion = () => {
   const titleRef = questionRef.querySelector('.question-title')
   titleRef.innerText = curQuestion.question
 
-  for (const key of ['a', 'b', 'c', 'd']) {
-    questionRef.querySelector(`.question-option[value="${key}"]`).innerText = `${key.toUpperCase()}: ${curQuestion[key]}`
-  }
+  ['a', 'b', 'c', 'd'].forEach(key => {
+    const option = questionRef.querySelector(`.question-option[value="${key}"]`)
+    option.innerText = `${key.toUpperCase()}: ${curQuestion[key]}`
+  }) 
+
+  resetBackground()
+  startTimer()
+  
 }
 
 const resetBackground = () => {
   questionRef.querySelectorAll('.question-option').forEach(ref => {
-    ref.style.backgroundColor = '#fff'
+    ref.style.backgroundColor = '#a6bccf'
   })
 }
 
@@ -49,7 +68,7 @@ const addEvent = () => {
 
   const checkBtn = document.querySelector('.check-btn');
   checkBtn.addEventListener('click', () => {
-    if (!curQuestion.userAns) return alert("Hãy chọn đáp án trước!");
+    if (!curQuestion.userAns) return alert("Chon dap an di!");
 
     const allOptions = questionRef.querySelectorAll('.question-option');
     allOptions.forEach(option => {
@@ -64,10 +83,13 @@ const addEvent = () => {
     });
 
     setTimeout(() => {
-      moveToNextQuestion();
-    }, 1500);
+      moveToNext();
+    }, 3000);
   });
 }
+
+addEvent()
+onShowQuestion()
 
 const ansers = document.querySelectorAll('.answer')
 const checkBtn = document.getElementById('checkBtn')

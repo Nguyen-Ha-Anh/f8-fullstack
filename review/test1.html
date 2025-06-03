@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="search employee">
+    <table>
+        <thead width="100%" border="1" cellspacing="0">
+            <tr></tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const headers = ['id', 'name', 'age']
+
+        const employees = [
+        {id: 1, name: 'Lan', age: 25},
+        {id: 2, name: 'Minh', age: 22},
+        {id: 3, name: 'Huy', age: 30},
+        { id: 4, name: 'Tùng', age: 27 }
+        ]
+        const tableHeaderE = document.querySelector('table thead tr')
+        tableHeaderE.innerHTML = ''
+
+        headers.forEach(header => {
+            const cell = document.createElement('th')
+            cell.innerText = header
+            tableHeaderE.append(cell)
+        })
+
+        const tableBodyE = document.querySelector('table tbody')
+        tableBodyE.innerHTML = ''
+
+        employees.forEach(employee => {
+            const row = document.createElement('tr')
+            headers.forEach(header => {
+                const cell = document.createElement('td')
+                cell.innerText = employee[header]
+                row.append(cell)
+            })
+
+            tableBodyE.append(row)
+        })
+
+        renderTable(employees)
+
+        const input = document.querySelector('#searchInput')
+        input.addEventListener('input', function() {
+            const keyword = input.value.toLowerCase()
+            const search = employees.filter(emp => {
+                emp.name.toLowerCase().includes(keyword)
+            })
+            renderTable(search)
+        })
+
+        
+    </script>
+</body>
+</html>
