@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
@@ -14,29 +13,57 @@
         const flowers = Array.from({ length: 400000 }, (_, i) => ({
             id: i + 1,
             name: `flower ${i + 1}`,
-            colorId: Math.floor(Math.random() * 20000) + 1 // random colorId between 1 and 2000
+            colorId: Math.floor(Math.random() * 20000) + 1
         }));
 
-        // sap xep tang dan 
-        flowers.sort((a, b) => a.colorId - b.colorId)
-        colors.sort((a, b) => a.id - b.id)
+        flowers.sort((a, b) => a.colorId - b.colorId);
+        colors.sort((a, b) => a.id - b.id);
 
-        let i = 0
-        let z = 0
-        const result = []
+        let i = 0;
+        let z = 0;
+        const mergeResult = [];
 
-        for (i < colors.length && z < flowers.length) {
-            const flower = flowers[z]
-            const color = colors[i]
+        while (i < colors.length && z < flowers.length) {
+            const flower = flowers[z];
+            const color = colors[i];
 
-            flowers.colorId === color.id
-            ? (result.push({...flower, colorName: color.name}), z++)
-            : flower.colorId < color.id
-            ? z++
-            : i++
+            if (flower.colorId === color.id) {
+                mergeResult.push({ ...flower, colorName: color.name });
+                z++;
+            } else if (flower.colorId < color.id) {
+                z++;
+            } else {
+                i++;
+            }
         }
 
-        console.log(result.slice(0, 10));
+        const binarySearch = (colors, targetId) => {
+        let start = 0;
+        let end = colors.length - 1;
+
+        while (start <= end) {
+            const middle = Math.floor((start + end) / 2);
+            if (colors[middle].id === targetId) return colors[middle];
+            if (colors[middle].id < targetId) start = middle + 1;
+            else end = middle - 1;
+        }
+
+        return null;
+    };
+
+
+        const binaryJoin = (flowers, colors) => {
+            const sortedColors = [...colors].sort((a, b) => a.id - b.id);
+            const result = flowers.map(flower => {
+                const matchedColor = binarySearch(sortedColors, flower.colorId);
+                return {
+                    ...flower,
+                    colorName: matchedColor ? matchedColor.name : "Unknown"
+                };
+            });
+            return result;
+        };
+
     </script>
 </body>
 </html>
