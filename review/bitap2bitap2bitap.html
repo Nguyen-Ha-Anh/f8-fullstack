@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let products = ['banana', 'apple', 'orange', 'grape']
+        let capitalizedProduct = products.map(product => product.charAt(0).toUpperCase() + product.slice(1))
+
+        console.log(capitalizedProduct)
+
+        let students = ['han', 'nam', 'hoa', 'linh']
+        let studentCodes = students.map(student => student.charAt(0).toUpperCase() + student.slice(1) + '_01')
+        console.log(studentCodes)
+    </script>
+</body>
+</html>
