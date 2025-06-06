@@ -79,4 +79,6 @@ const getProduct = async () => {
         return await response.json()
 }
 // renderProducts(products)
-getProduct().then(data => renderProducts(data))
+getProduct().then(data => {
+    renderProducts(data)
+})
