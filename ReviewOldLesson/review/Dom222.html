@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container"></div>
+
+    <script>
+        const products = [
+        {
+            name: "Áo hoodie",
+            price: "300.000đ",
+            image: "https://picsum.photos/id/1011/300/200"
+        },
+        {
+            name: "Quần short",
+            price: "150.000đ",
+            image: "https://picsum.photos/id/1015/300/200"
+        },
+        {
+            name: "Mũ lưỡi trai",
+            price: "80.000đ",
+            image: "https://picsum.photos/id/1025/300/200"
+        }
+        ]
+
+        const container = document.querySelector('.container')
+
+        function renderProducts(products) {
+            //thieu forEach
+            const productItem = document.createElement('div')
+            productItem.className = 'product-item'
+            
+            const img = document.createElement('div')
+            productImg.className = 'product-img'
+            img.src = product.image
+
+            const productName = document.createElement('div')
+            productName.className = 'product-name'
+            productName.textContent = product.name
+
+            const price = document.createElement('div')
+            price.className = 'product-price'
+            price.textContent = product.price
+
+            productItem.append(img, name, price)
+
+            container.appendChild(productItem)
+
+        }
+        renderProducts(products)
+    </script>
+</body>
+</html>
