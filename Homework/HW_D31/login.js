@@ -1,27 +1,45 @@
 import {post} from './api.js'
 
 const loginBtnRef =  document.querySelector('#login-btn')
+const form = document.getElementById('login-form')
+const error = document.getElementById('error-msg')
 
-// const onMounted = () => {
-//     const accessToken = localStorage.getItem('access')
-//     if(accessToken) {
-//         window.location.href = './home.html'
-//     }
-// }
+const onMounted = () => {
+    const accessToken = localStorage.getItem('access')
+    if(accessToken) {
+        window.location.href = './home.html'
+    }
+}
 
-loginBtnRef.addEventListener('click', (e) => {
+form.addEventListener('submit', async (e) => {
     e.preventDefault()
     const email = document.getElementById('email').value.trim()
     const pass = document.getElementById('password').value.trim()
-    
-    post('login', {
-        email: email, password: pass
-    })
 
-    localStorage.setItem('access', DataTransfer.access)
-    localStorage.setItem('refresh', DataTransfer.refresh)
+    if (!email || !pass || pass.length <6) {
+        error.textContent = 'khong hop le'
+        return
+    }
 
-    window.location.href = './home.html'
+    try {
+        const data = await post('/login', {
+            email: email,
+            password: pass
+        })
+
+        if (data.access && data.refresh) {
+            localStorage.setItem('access', data.access)
+            localStorage.setItem('refresh', data.refresh)
+            window.location.href = './home.html'
+        } else {
+            error.textContent = data.detail || 'that bai'
+        }
+
+    } catch(error) {
+        console.error(error)
+        error.textContent = 'thu lai'
+    }
+
 })
 
 onMounted()

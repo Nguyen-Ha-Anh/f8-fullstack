@@ -15,25 +15,22 @@ export const get = async(endpoint) => {
 }
 
 export const post = async(endpoint, body) => {
-    const response = await fetch(
-        `${baseUrl}/${endpoint}`, {
-            method: 'post',
-            body: JSON.stringify(body)
-        }
-    )
-    
+    const response = await fetch(`${baseUrl}${endpoint}`, {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+
     const data = await response.json()
-
-    if (data.detail === 'token expired') {
-        await getNewToken(() => post(endpoint, body))
-    }
-
     return data
+    
 }
 
 const getNewToken = async (callback) => {
     const data = await post('get_new_token', {
-        refresh: localStorage.getItem('refesh')
+        refresh: localStorage.getItem('refresh')
     })
 
     if (data.access) {
