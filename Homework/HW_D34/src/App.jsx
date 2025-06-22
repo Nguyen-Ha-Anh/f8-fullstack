@@ -2,7 +2,6 @@ import './App.css'
 import {FTable, EmployeeDialog, ConfirmDeleteDialog, DialogContainer} from './components'
 import {Button, DialogContent, DialogTitle, Dialog, TextField, DialogActions} from "@mui/material";
 import {useState} from "react";
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const initEmployee = {
   id: null, name: null, age: null, address: null
@@ -40,21 +39,40 @@ function App() {
     setIsOpenDialog(true)
   }
 
-  const onSave = () => {
-    console.log('on save')
+  const onSave = (data) => {
+    if (!data.name || !data.age || !data.address) {
+      alert('nhap du thong tin')
+      return
+    }
+
+    if (data.id) {
+      const update = employees.map(emp => emp.id === employee.id ? employee : emp)
+      setEmployee(update)
+    } else {
+      const newId = employees.length > 0 ? Math.max(...employees.map(emp => emp.id)) + 1 : 1
+      const newEmployee = { ...data, id: newId }
+      setEmployees([...employees, newEmployee])
+    }
+    setIsOpenDialog(false)
+  }
+
+  const onDelete = (id) => {
+    const newList = employees.filter(emp => emp.id !== id)
+    setEmployees(newList)
   }
 
   console.log('reload main screen')
 
   return (
     <>
-      <FTable columns={columns} rows={employees} onEdit={onEdit}/>
+      <FTable columns={columns} rows={employees} onEdit={onEdit} onDelete={onDelete}/>
       <Button variant="outlined" onClick={onCreate}>Add new</Button>
       <EmployeeDialog
         isOpen={isOpenDialog}
         setIsOpen={setIsOpenDialog}
         employee={curEmployee}
         setEmployee={setCurEmployee}
+        onSave={onSave}
       />
     </>
   )

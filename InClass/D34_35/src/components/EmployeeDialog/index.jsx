@@ -1,14 +1,6 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import DialogContainer from "../DialogContainer";
+import DialogContainer from "../DialogContainer/index.jsx";
 
 export default function ({ isOpen, setIsOpen, employee, onSave }) {
   const [inputtingEmployee, setInputtingEmployee] = useState({ ...employee });
@@ -16,10 +8,6 @@ export default function ({ isOpen, setIsOpen, employee, onSave }) {
   useEffect(() => {
     setInputtingEmployee({ ...employee });
   }, [employee]);
-
-  const onClickSave = () => {
-    console.log(employee);
-  };
 
   const onInput = (e) => {
     setInputtingEmployee({
@@ -29,7 +17,14 @@ export default function ({ isOpen, setIsOpen, employee, onSave }) {
   };
 
   return (
-    <DialogContainer isOpen={isOpen} setIsOpen={() => setIsOpen(false)}>
+    <DialogContainer
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      onSave={() => {
+        onSave(inputtingEmployee);
+        setIsOpen(false);
+      }}
+    >
       <TextField
         fullWidth
         name="name"

@@ -7,14 +7,16 @@ const TableContext = createContext(null)
 
 const Cell = ({row, column}) => {
   const injector = useContext(TableContext)
-  const {onEdit} = injector
+  const {onEdit, onDelete} = injector
 
   return (
     <TableCell>
       {column.name === 'action'
         ? <>
             <ModeEditOutlineOutlinedIcon color={'success'} onClick={() => onEdit(row)}/>
-            <DeleteOutlineOutlinedIcon color={'error'}/>
+            <DeleteOutlineOutlinedIcon
+            color={'error'}
+            onClick={() => onDelete(row.id)}/>
           </>
         : <span>{row[column.name]}</span>
       }
@@ -37,9 +39,9 @@ const Row = ({row}) => {
   )
 }
 
-export default function ({columns, rows, onEdit}) {
+export default function ({columns, rows, onEdit, onDelete}) {
   const provider = {
-    columns, rows, onEdit
+    columns, rows, onEdit, onDelete
   }
 
   return (
