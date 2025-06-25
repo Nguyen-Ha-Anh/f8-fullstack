@@ -1,16 +1,16 @@
-import './App.css'
-import StudentCard from './components/StudentCard';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Login from './components/Login';
+import Post from './components/Post';
+
 function App() {
-
   return (
-    <>
-      <h1>Student List</h1>
-      <StudentCard name='Nam' age='20' />
-      <StudentCard name='Lan' age='23' />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/post" element={<Post />} />
+      </Routes>
+    </BrowserRouter>
   )
-
-  
 }
 
-export default App
+export default App;
