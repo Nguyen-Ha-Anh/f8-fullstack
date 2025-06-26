@@ -25,7 +25,7 @@ const Post = () => {
       }
     }
   }
-  const handleLogout = async () => {
+  const freshToken = async () => {
     try {
       const refreshToken = localStorage.getItem('refreshToken');
 
@@ -39,9 +39,17 @@ const Post = () => {
       await fetchPosts();
     }  catch (err) {
       console.error('khong duoc, thu lai di', err)
-      setError('error');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      window.location.href = '/';
     }
   }
+
+  const handleLogout = () => {
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+        window.location.href = "/";
+    };
 
   useEffect(() => {
     fetchPosts();
