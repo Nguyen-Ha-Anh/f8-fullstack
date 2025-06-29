@@ -1,11 +1,24 @@
-import style from './style.module.sass'
+import './style.sass'
 import Row from './Row.jsx'
 import {TableContext} from './const.js'
+import { useState } from 'react'
+import CellSeclection from './CellSelection.jsx'
+
+const defaultCursor = {
+    rowIndex: 0,
+    columnIndex: 0,
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0
+}
 
 export default function ({columns, rows}) {
+    const [cursor, setCursor] = useState({})
+
     // console.log('columns', columns)
     const provider = {
-        columns, rows
+        columns, rows, cursor, setCursor   
     }
 
     return (
@@ -28,6 +41,8 @@ export default function ({columns, rows}) {
                     }
                 </tbody>
             </table>
+
+            <CellSeclection/>
         </TableContext>
     )
 }

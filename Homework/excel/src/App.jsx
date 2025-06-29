@@ -21,7 +21,7 @@ function App() {
         comment: 'this is comment'
       },
       {
-        id: 1,
+        id: 2,
         product: 'product 2',
         quantity: 50,
         price: 10000,
