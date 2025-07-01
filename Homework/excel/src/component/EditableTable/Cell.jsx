@@ -1,6 +1,8 @@
-import { useRef } from "react"
+import { useRef, useContext } from "react"
+import { TableContext } from "./const.js"
+import { js } from '@eslint/js';
 
-export default function ({row, column}) {
+export default function ({row, column, rowIndex, columnIndex}) {
     const injector = useContext(TableContext) 
     
     const {cursor, setCursor} = injector
@@ -16,7 +18,7 @@ export default function ({row, column}) {
             const top = cellRef.current.offsetTop
 
             setCursor({
-                ...cursor, width, height, top, left
+                ...cursor, width, height, top, left, rowIndex, columnIndex
             })
         }
     }
