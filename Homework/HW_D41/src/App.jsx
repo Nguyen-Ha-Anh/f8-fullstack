@@ -1,7 +1,7 @@
 import './App.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { useState } from 'react'
-import { addProduct, removeProduct, updateProduct } from './store/components/productSlice'
+import { addProduct, removeProduct, updateProduct } from './store/store/components/productSlice'
 
 function App() {
   const products = useSelector(state => state.product.products)
@@ -36,7 +36,7 @@ function App() {
     } else {
       dispatch(addProduct(newProduct))
     }
-    
+
     setForm({
       name: '',
       price: '',

@@ -1,61 +1,73 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react';
 import './App.css'
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { deleteBook, getBooks, createBook, updateBook } from './store/bookSlice';
 
 function App() {
-  //B1
-  const [form, setForm] = useState({
-    name: '',
-    price: '',
-    quantity: '',
-    unit: ''
+  const dispatch = useDispatch()
+  const {books, loading, error} = useSelector(state => state.book)
+
+  useEffect(() => {
+    dispatch(getBooks())
+  }, [])
+
+
+  const [search, setSearch] = useState('')
+  
+  const filterBooks = books.filter(book => {
+    const title = book.title.toLowerCase()
+    const body = book.body.toLowerCase()
+    return title.includes(search) || body.includes(search)
   })
 
-  //B2
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    })
+  const [form, setForm] = useState({
+    id: null,
+    title: '',
+    body: ''
+  })
 
-    // console.log('form hien tai:', {
-    //   ...form,
-    //   [e.target.name]: e.target.value
-    // })
-
-    const handleAdd = () => {
-      const newProduct = {
-        id: Date.now().toString(),
-        name: form.name,
-        price: form.price,
-        quantity: form.quantity,
-        unit: form.unit,
-      }
-
-      console.log('new product:', newProduct)
-    }
-  }
+  const [editId, setEditId] = useState(null)
 
   return (
     <>
-    
+      <h1>List book</h1>
+
       <input 
       type="text"
-      name='name'
-      value={form.name}
-      onChange={handleChange}
+      placeholder='search book'
+      value={search}
+      onChange={(e) => setSearch(e.target.value.toLowerCase())}
       />
-      <input 
-      type="number"
-      name='price'
-      value={form.name}
-      onChange={handleChange}
+
+      {loading && <p>Loaidng..</p>}
+      {error && <p style={{color: 'red'}}>{error}</p>}
+
+      <h2>{editId ? 'Sửa sách' : 'Thêm sách mới'}</h2>
+      <input
+        type="text"
+        placeholder="Tiêu đề"
+        value={form.title}
+        onChange={(e) => setForm({ ...form, title: e.target.value })}
       />
-      <input 
-      type="number"
-      name='quantity'
-      value={form.name}
-      onChange={handleChange}
+      <input
+        type="text"
+        placeholder="Nội dung"
+        value={form.body}
+        onChange={(e) => setForm({ ...form, body: e.target.value })}
       />
+      <button onClick={handleSubmit}>
+        {editId ? 'Lưu chỉnh sửa' : 'Thêm mới'}
+      </button>
+
+      {filterBooks.map(book => (
+        <div key={book.id}>
+          <h2>{book.title}</h2>
+          <p>{book.body}</p>
+          <button onClick={() => dispatch(deleteBook(book.id))}>Delete</button>
+          <button onClick={() => handleEdit(book)}>Sửa</button>
+        </div>
+      ))}
     </>
   )
 }
