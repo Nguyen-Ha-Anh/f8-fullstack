@@ -1,11 +1,10 @@
 import './App.css'
-import TodoApp from './TodoApp/TodoApp'
 
 function App() {
-  
+
   return (
     <>
-      <TodoApp/>
+      
     </>
   )
 }

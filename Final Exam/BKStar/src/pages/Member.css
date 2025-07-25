@@ -1,0 +1,35 @@
+.members-wrapper {
+  background-color: #f5f6fa;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.members-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.members-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.members-table th,
+.members-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.members-table thead {
+  background-color: #f1f3f6;
+  font-weight: bold;
+}
+
+.members-table tbody tr:nth-child(even) {
+  background-color: #f9f9fc;
+}

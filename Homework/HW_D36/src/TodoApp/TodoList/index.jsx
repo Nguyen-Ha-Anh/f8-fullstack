@@ -6,7 +6,6 @@ function TodoList({todos, onToggle, onDelete}) {
     <div className="todo-list">
       {todos.map(todo => (
         <TodoItem 
-        text="Example Task"
         key={todo.id}
         todo={todo}
         onToggle={onToggle}
