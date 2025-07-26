@@ -1,0 +1,79 @@
+.main {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 12px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.quiz {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 700px;
+  margin: 20px auto;
+  background: white;
+}
+
+.question-header {
+  margin-bottom: 16px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+  cursor: pointer;
+  text-align: left;
+}
+
+.option.selected {
+  background-color: #d0e3ff;
+}
+
+.option.correct {
+  background-color: #b2f2bb;
+}
+
+.option.incorrect {
+  background-color: #ffa8a8;
+}
+
+.money-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.money-item {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.money-item.active {
+  background-color: #ffe066;
+  font-weight: bold;
+}
