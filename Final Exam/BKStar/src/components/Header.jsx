@@ -47,8 +47,19 @@ export default function Header() {
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-              <MenuItem onClick={handleClose}>Trang cá nhân</MenuItem>
-              <MenuItem onClick={handleClose}>Đăng xuất</MenuItem>
+              <MenuItem onClick={() => {
+                handleClose();
+                navigate('/profile');
+              }}>
+                Trang cá nhân
+              </MenuItem>
+              <MenuItem onClick={() => {
+                handleClose();
+                localStorage.removeItem('isLoggedIn');
+                navigate('/');
+              }}>
+                Đăng xuất
+              </MenuItem>
             </Menu>
           </Box>
         </Box>

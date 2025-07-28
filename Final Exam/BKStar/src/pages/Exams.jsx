@@ -1,8 +1,12 @@
 import React from "react";
 import "./Exams.css";
-import { FaFileAlt } from "react-icons/fa"; // icon bài thi
+import { FaFileAlt } from "react-icons/fa"; 
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Exams() {
+  const navigate = useNavigate();
+  const { id: classId } = useParams();
+
   const ongoingExams = [
     { id: 1, name: "ĐỀ THI LẦN 1", date: "05/01/2024" },
     { id: 2, name: "Thi thu lan 2", date: "26/01/2024" },
@@ -32,7 +36,12 @@ export default function Exams() {
         <h3>Bài thi đang diễn ra</h3>
         <div className="exam-grid">
           {ongoingExams.map((exam) => (
-            <div className="exam-box" key={exam.id}>
+            <div
+              className="exam-box"
+              key={exam.id}
+              onClick={() => navigate(`/class/${classId}/test/${exam.id}`)}
+              style={{ cursor: "pointer" }}
+            >
               <FaFileAlt className="exam-icon" />
               <div className="exam-info">
                 <strong>{exam.name}</strong>
