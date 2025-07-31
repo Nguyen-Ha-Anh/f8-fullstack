@@ -2,7 +2,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      # dockerfile: Dockerfile
     working_dir: /app/web
     volumes:
       - .:/app/web
