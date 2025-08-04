@@ -10,12 +10,12 @@ create table guests (
   phone TEXT,
   address TEXT,
   date_of_birth DATE,
-  nationally TEXT,
+  nationality TEXT,
   created_at TIMESTAMP
 );
 
 -- 3
-CREATE TABLE 'rooms' (
+CREATE TABLE rooms (
   room_id SERIAL PRIMARY KEY,
   room_number INT,
   room_type TEXT,
@@ -27,7 +27,7 @@ CREATE TABLE 'rooms' (
 );
 
 -- 4
-CREATE Table 'bookings' (
+CREATE Table bookings (
   booking_id SERIAL PRIMARY KEY,
   guest_id INT,
   room_id INT,
@@ -52,10 +52,10 @@ alter table rooms add column amenities TEXT[];
 alter table rooms add column last_updated TIMESTAMP;
 
 -- 9
-alter bookings add column discount_percentage DECIMAL(5,2);
+alter table bookings add column discount_percentage DECIMAL(5,2);
 
 -- 10
-insert into guests (guest_id, first_name, last_name, email, phone, address, date_of_birth, nationality, created_at)
+insert into guests (first_name, last_name, email, phone, address, date_of_birth, nationality, created_at)
 values
 (nextval('guest_id_seq'), 'MinMin', 'Nguyen', 'minminnyen@email.com', '0123456789', '123 Tran Duy Hung, Ha Noi', '2002-03-15', 'VN', CURRENT_TIMESTAMP),
 (nextval('guest_id_seq'), 'An', 'Tran', 'antran@email.com', '0123456788', '456 Le Loi, Hue', '1995-09-01', 'VN', CURRENT_TIMESTAMP),
@@ -64,7 +64,7 @@ values
 (nextval('guest_id_seq'), 'Emily', 'Jones', 'emily@email.com', '0998877665', 'New York, USA', '1990-12-05', 'US', CURRENT_TIMESTAMP);
 
 -- 11
-INSERT INTO rooms (room_id, room_number, room_type, price_per_night, max_occupancy, is_available, floor, description)
+INSERT INTO rooms (room_number, room_type, price_per_night, max_occupancy, is_available, floor, description)
 VALUES
 (nextval('room_id_seq'), '101', 'standard', 89.99, 2, true, 1, 'Comfortable standard room with queen bed'),
 (nextval('room_id_seq'), '102', 'standard', 85.00, 2, true, 1, 'Standard room with twin beds'),
@@ -78,7 +78,7 @@ VALUES
 (nextval('room_id_seq'), '104', 'standard', 80.00, 1, true, 1, 'Budget standard room');
 
 -- 12
-INSERT INTO bookings (booking_id, guest_id, room_id, check_in_date, check_out_date, total_price, booking_status, payment_status, created_at)
+INSERT INTO bookings (guest_id, room_id, check_in_date, check_out_date, total_price, booking_status, payment_status, created_at)
 VALUES
 (nextval('booking_id_seq'), 1, 1, '2023-07-15', '2023-07-18', 269.97, 'completed', 'paid', '2023-06-20 10:30:00'),
 (nextval('booking_id_seq'), 2, 3, '2023-07-10', '2023-07-12', 170.00, 'confirmed', 'unpaid', '2023-06-18 14:00:00'),
@@ -106,7 +106,7 @@ SELECT * from bookings
 inner join guests on bookings.guest_id = guests.guest_id
 inner join rooms on bookings.room_id = rooms.room_id
 -- 19
-select * from rooms
+select * from guests
 left join bookings on guests.guest_id = bookings.guest_id
 -- 20
 select * from rooms

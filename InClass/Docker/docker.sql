@@ -19,11 +19,11 @@ select '{"a":
 
 
 create table if not exists employee (
-                                        id bigint,
-                                        fullname text,
-                                        age int8,
-                                        address text, -- default 'test'
-                                        active bool default true
+    id bigint,
+    fullname text,
+    age int8,
+    address text, -- default 'test'
+    active bool default true
 );
 
 
@@ -103,4 +103,4 @@ insert into employee(fullname) values ('nguyen van e');
 
 select max(id) from employee
 
-select setval('employee_id_seq', (select max(id) from employee))est
+select setval('employee_id_seq', (select max(id) from employee))

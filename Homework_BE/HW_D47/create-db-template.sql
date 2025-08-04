@@ -4,6 +4,7 @@ CREATE TABLE "db-f8" (
 );
 drop TABLE "db-f8"
 
+-- tao bang Book
 CREATE Table if not exists book (
   book_id int,
   title varchar(200),
@@ -18,10 +19,12 @@ CREATE Table if not exists book (
 )
 select * from book
 
+-- su dung alter
 alter table book add column status varchar(20) 
 alter table book add column language varchar(30)
 alter table book add column shelf_position varchar(20)
 
+-- nhap du lieu cho 15 cuon sach khac nhau
 insert into book values (1, 'The Adventures of Cricket', 'To Hoai', 2010, 'Kim Dong', 'Literature', 150, 75000.00, 10, '2020-01-15', 'Available', 'Vietnamese', 'A1');
 insert into book values (2, 'The Alchemist', 'Paulo Coelho', 2013, 'NXB Tre', 'Novel', 228, 85000.00, 7, '2020-02-20', 'Available', 'Vietnamese', 'A2');
 insert into book values (3, 'How to Win Friends', 'Dale Carnegie', 2016, 'NXB Tong Hop', 'Psychology', 320, 120000.00, 5, '2020-03-10', 'Borrowed', 'Vietnamese', 'B1');
@@ -33,38 +36,67 @@ insert into book values (8, 'Clean Code', 'Robert C. Martin', 2008, 'Prentice Ha
 insert into book values (9, 'The Psychology of Money', 'Morgan Housel', 2020, 'NXB Tài chính', 'Finance', 252, 110000.00, 8, '2021-05-20', 'Available', 'Vietnamese', 'D1');
 insert into book values (10, 'Tuổi trẻ đáng giá bao nhiêu?', 'Rosie Nguyễn', 2016, 'NXB Trẻ', 'Self-help', 320, 98000.00, 10, '2021-06-15', 'Available', 'Vietnamese', 'D3');
 insert into book values (11, 'Deep Work', 'Cal Newport', 2016, 'NXB Lao động', 'Productivity', 304, 115000.00, 9, '2021-07-10', 'Available', 'Vietnamese', 'E1');
-insert into book values (12, 'Harry Potter and the Philosopher\'s Stone', 'J.K. Rowling', 1997, 'Bloomsbury', 'Fantasy', 223, 180000.00, 2, '2021-08-25', 'Borrowed', 'English', 'A5');
+insert into book values (12, 'Harry Potter and the Philosopher"s Stone', 'J.K. Rowling', 1997, 'Bloomsbury', 'Fantasy', 223, 180000.00, 2, '2021-08-25', 'Borrowed', 'English', 'A5');
 insert into book values (13, 'Dế mèn phiêu lưu ký', 'Tô Hoài', 1941, 'Kim Đồng', 'Children', 160, 65000.00, 11, '2021-09-10', 'Available', 'Vietnamese', 'A1');
 insert into book values (14, 'Start With Why', 'Simon Sinek', 2009, 'Portfolio', 'Self-help', 256, 125000.00, 5, '2021-10-15', 'Available', 'English', 'D2');
 insert into book values (15, 'Design Patterns', 'Erich Gamma et al.', 1994, 'Addison-Wesley', 'Programming', 395, 270000.00, 1, '2021-11-05', 'Available', 'English', 'C4')
 
+-- Hiển thị book_id, title, author của tất cả sách.
 select book_id, title, author from book;
+-- Hiển thị thông tin các sách xuất bản năm 2020.
 select * from book where publish_year = 2020;
+-- Hiển thị thông tin các sách có price > 200,000.
 select * from book where price > 200000;
+-- Hiển thị thông tin các sách có stock > 5.
 select * from book where stock > 5;
+-- Hiển thị thông tin các sách thuộc category = 'Novel'.
 select * from book where category = 'Novel';
+-- Hiển thị thông tin các sách có status = 'Borrowed'.
 select * from book where status = 'Borrowed'
+-- Hiển thị thông tin các sách có language = 'English'.
 select * from book where language = 'English';
+-- Hiển thị thông tin các sách xuất bản trước năm 2000.
 select * from book where publish_year < 2000;
+-- Hiển thị thông tin các sách có page_count > 300.
 select * from book where page_count > 300;
+-- Hiển thị thông tin các sách thuộc category = 'Science' và price < 150,000.
 select * from book where category = 'Science' and price < 150000;
+-- Hiển thị thông tin các sách xuất bản từ 2015 đến 2022.
 select * from book where publish_year between 2015 and 2022;
+-- Hiển thị thông tin các sách có status = 'Available' và stock < 3.
 select * from book where status = 'Available' and stock < 3;
+-- Hiển thị thông tin các sách của author = 'Nguyen Nhat Anh' hoặc 'To Hoai'.
 select * from book where author in ('Nguyen Nhat Anh', 'To Hoai');
+-- Hiển thị thông tin các sách của publisher = 'Kim Dong' hoặc 'NXB Tre'.
 select * from book where publisher in ('Kim Dong', 'NXB Tre');
+-- Hiển thị thông tin các sách có language = 'Vietnamese' và page_count < 200.
 select * from book where language = 'Vietnamese' and page_count < 200;
+-- Hiển thị thông tin các sách có category = 'Technology' hoặc 'Science' và xuất bản sau năm 2010.
 select * from book where category in ('Technology', 'Science') and publish_year > 2010;
+-- Hiển thị thông tin các sách có shelf_position = 'A1', 'A2' hoặc 'A3'.
 select * from book where shelf_position in ('A1', 'A2', 'A3');
+-- Hiển thị thông tin các sách có price từ 100,000 đến 300,000 và status = 'Available'.
 select * from book where price between 100000 and 300000 and status = 'Available';
+-- Hiển thị thông tin các sách của author = 'Paulo Coelho' hoặc 'Dale Carnegie' và stock > 0.
 select * from book where author in ('Paulo Coelho', 'Dale Carnegie') and stock > 0;
 
+-- Cập nhật status thành 'Borrowed' cho sách có book_id = 5.
 update book set status = 'Borrowed' where book_id = 5;
+-- Cập nhật stock thành 0 cho các sách có status = 'Removed'.
 update book set stock = 0 where status = 'Removed';
-update book set price + 10000 where category = 'Novel';
+-- Cập nhật price tăng thêm 10,000 cho tất cả sách thuộc category = 'Novel'.
+update book set price = price + 10000 where category = 'Novel';
+-- Cập nhật shelf_position thành 'B5' cho các sách của author = 'Nguyen Nhat Anh'.
 update book set shelf_position = 'B5' where author = 'Nguyen Nhat Anh';
+-- Cập nhật status thành 'Available' cho các sách có status = 'Borrowed' và stock > 5.
 update book set status = 'Available' where status = 'Borrowed' and stock > 5;
+-- Cập nhật language thành 'Vietnamese' cho các sách của publisher = 'Kim Dong' có language là NULL.
 update book set language = 'Vietnamese' where publisher = 'Kim Dong' and language is null;
+-- Cập nhật stock giảm đi 1 cho sách có book_id = 8.
 update book set stock = stock - 1 where book_id = 8;
+-- Cập nhật category thành 'Literature' cho các sách có category = 'Novel' và xuất bản trước năm 2000.
 update book set category = 'Literature' where category = 'Novel' and publish_year < 2000
+-- Cập nhật publisher thành 'NXB Giao Duc' cho các sách của publisher = 'NXB Dai hoc Quoc gia' và thuộc category = 'Textbook'.
 update book set publisher = 'NXB Giao Duc' where publisher = 'NXB Dai hoc Quoc gia' and category = 'Textbook';
+-- Cập nhật page_count thành 0 cho các sách có status = 'Removed' và stock = 0.
 update book set page_count = 0 where status = 'Removed' and stock = 0
