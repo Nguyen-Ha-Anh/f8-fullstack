@@ -14,21 +14,73 @@ export default function RegisterForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
-    const [error, setError] = useState('')
+    const [errors, setErrors] = useState({
+      name: '',
+      email: '',
+      password: '',
+      confirm: '',
+      general: ''
+    })
 
     const handleRegister = () => {
-        if (!name || !email || !password || !confirm) {
-            setError('enter full information')
-            return 
+      let newErrors = { name: '', email: '', password: '', confirm: '', general: '' };
+      let hasError = false;
+
+      if (!name) {
+        newErrors.name = 'Vui lòng nhập tên của bạn';
+        hasError = true;
+      }
+      if (!email) {
+        newErrors.email = 'Vui lòng nhập email';
+        hasError = true;
+      }
+      if (!password) {
+        newErrors.password = 'Vui lòng nhập mật khẩu';
+        hasError = true;
+      }
+      if (!confirm) {
+        newErrors.confirm = 'Vui lòng nhập lại mật khẩu';
+        hasError = true;
+      } else if (password !== confirm) {
+        newErrors.confirm = 'Mật khẩu nhập lại không khớp';
+        hasError = true;
+      }
+
+      if (hasError) {
+        setErrors(newErrors);
+        return;
+      }
+
+      setErrors({ name: '', email: '', password: '', confirm: '', general: '' });
+
+      fetch('https://b1u9y178ok.execute-api.ap-southeast-1.amazonaws.com/master/user/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          role: 'student',
+          status: 'confirming'
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Email đã tồn tại hoặc có lỗi xảy ra');
         }
-        if ( password !== confirm) {
-            setError('incorrect password')
-            return
-        }
-        setError('') 
-        console.log({name, email, password})
-        navigate('/')
+        return response.json();
+      })
+      .then(data => {
+        alert('Đăng ký thành công, vui lòng đăng nhập!');
+        navigate('/');
+      })
+      .catch(err => {
+        setErrors(prev => ({ ...prev, general: err.message || 'Có lỗi xảy ra khi đăng ký' }));
+      })
     }
+
     
     return (
     <Box
@@ -66,8 +118,8 @@ export default function RegisterForm() {
           margin="normal"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          error={!name && error}
-          helperText={!name && error ? 'Vui lòng nhập tên của bạn' : ''}
+          error={!name && errors.name}
+          helperText={!name && errors.name}
         />
         <TextField
           label="Địa chỉ email *"
@@ -75,6 +127,8 @@ export default function RegisterForm() {
           margin="normal"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          error={!!errors.email}
+          helperText={errors.email}
         />
         <TextField
           label="Mật khẩu *"
@@ -83,6 +137,8 @@ export default function RegisterForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          error={!!errors.password}
+          helperText={errors.password}
         />
         <TextField
           label="Nhập lại mật khẩu *"
@@ -91,11 +147,13 @@ export default function RegisterForm() {
           type="password"
           value={confirm}
           onChange={(e) => setConfirm(e.target.value)}
+          error={!!errors.confirm}
+          helperText={errors.confirm}
         />
 
-        {error && (
+        {errors.general && (
           <Typography color="error" mt={1} mb={2}>
-            {error}
+            {errors.general}
           </Typography>
         )}
 

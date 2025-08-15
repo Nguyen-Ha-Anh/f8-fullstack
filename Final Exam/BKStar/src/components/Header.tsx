@@ -1,17 +1,33 @@
-// src/components/Header.jsx
 import React from 'react';
 import { AppBar, Toolbar, Typography, Box, Button, TextField, InputAdornment, IconButton, Avatar, Menu, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { useState, useEffect } from 'react';
+
 export default function Header() {
   const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
 
   const handleMenuClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+    navigate('/');
+  }
 
   return (
     <AppBar position="static" sx={{ background: 'white', color: 'black', boxShadow: 1 }}>
@@ -27,7 +43,7 @@ export default function Header() {
         </Box>
 
         <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button variant="outlined" onClick={() => alert('Tạo lớp')}>
+          <Button variant="outlined" onClick={() => navigate('/create-class')}>
             + Tạo lớp
           </Button>
 
@@ -38,7 +54,7 @@ export default function Header() {
 
           <Box>
             <IconButton onClick={handleMenuClick}>
-              <Avatar alt="User" sx={{ width: 32, height: 32 }} />
+              <Avatar alt={user?.name || 'User'} src={user?.avatar} sx={{ width: 32, height: 32 }} />
             </IconButton>
             <Menu
               anchorEl={anchorEl}
@@ -55,8 +71,7 @@ export default function Header() {
               </MenuItem>
               <MenuItem onClick={() => {
                 handleClose();
-                localStorage.removeItem('isLoggedIn');
-                navigate('/');
+                handleLogout()
               }}>
                 Đăng xuất
               </MenuItem>

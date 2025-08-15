@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   TextField,
@@ -8,28 +8,41 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { getEmailCookie, setEmailCookie, removeEmailCookie } from '../utils/cookie';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('')
-  const navigate = useNavigate()
+  const [rememberMe, setRememberMe] = useState(false)
 
-  const VALID_EMAIL = 'bangtran.hha@gmail.com'
-  const VALID_PASSWORD = 'Bangtx@123'
-
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
-      setError('please enter full information')
-      return
+      setError('Vui lòng nhập đầy đủ thông tin');
+      return;
     }
-    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-      localStorage.setItem('isLoggedIn', 'true')
-      navigate('/classes')
-    } else {
-      setError('incorrect email or password')
+    try {
+      await login(email, password);
+      if (rememberMe) setEmailCookie(email);
+      else removeEmailCookie();
+      navigate('/classes');
+    } catch (err) {
+      console.error(err);
+      setError('Đăng nhập thất bại');
     }
   }
+
+  useEffect(() => {
+    const savedEmail = getEmailCookie()
+    if (savedEmail) {
+      setEmail(savedEmail)
+      setRememberMe(true)
+    }
+  }, [])
 
   return (
     <Box
@@ -119,8 +132,15 @@ export default function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <FormControlLabel control={<Checkbox />} label="Ghi nhớ tôi" />
-
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                />
+              }
+              label="Ghi nhớ tôi"
+            />
             <Button
               variant="contained"
               fullWidth
